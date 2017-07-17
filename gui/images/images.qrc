@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>camera_auto_mode.png</file>
+        <file>camera_camera_setting.png</file>
+        <file>camera_flash_auto.png</file>
+        <file>camera_flash_fill.png</file>
+        <file>camera_flash_off.png</file>
+        <file>camera_flash_redeye.png</file>
+        <file>camera_white_balance_cloudy.png</file>
+        <file>camera_white_balance_flourescent.png</file>
+        <file>camera_white_balance_incandescent.png</file>
+        <file>camera_white_balance_sunny.png</file>
+        <file>toolbutton.png</file>
+        <file>toolbutton.sci</file>
+    </qresource>
+</RCC>

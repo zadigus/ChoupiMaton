@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>PhotoPreview.qml</file>
+        <file>ZoomControl.qml</file>
+        <file>VideoCaptureControls.qml</file>
+        <file>VideoPreview.qml</file>
+        <file>FocusButton.qml</file>
+        <file>PhotoCaptureControls.qml</file>
+        <file>main.qml</file>
+        <file>Popup.qml</file>
+        <file>CameraPropertyPopup.qml</file>
+        <file>CameraPropertyButton.qml</file>
+        <file>CameraButton.qml</file>
+        <file>CameraListPopup.qml</file>
+        <file>CameraListButton.qml</file>
+    </qresource>
+</RCC>
