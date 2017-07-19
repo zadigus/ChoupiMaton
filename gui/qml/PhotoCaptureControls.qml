@@ -48,7 +48,6 @@ FocusScope {
     property int buttonsPanelWidth: buttonPaneShadow.width
 
     signal previewSelected
-    signal videoModeSelected
     id : captureControls
 
     Rectangle {
@@ -136,20 +135,12 @@ FocusScope {
             }
 
             CameraButton {
-                text: "Switch to Video"
-                onClicked: captureControls.videoModeSelected()
-            }
-
-            CameraButton {
                 id: quitButton
                 text: "Quit"
                 onClicked: Qt.quit()
             }
         }
-
-
     }
-
 
     ZoomControl {
         x : 0
