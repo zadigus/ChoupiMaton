@@ -59,17 +59,9 @@ Rectangle {
                     camera.start()
                 }
             }
-            PropertyChanges {
-              target: stillControls
-              visible: true
-            }
         },
         State {
             name: "PhotoPreview"
-            PropertyChanges {
-              target: photoPreview
-              visible: true
-            }
         }
     ]
 
@@ -84,21 +76,39 @@ Rectangle {
                 cameraUI.state = "PhotoPreview"
             }
         }
+
+        videoRecorder {
+             resolution: "640x480"
+             frameRate: 30
+        }
     }
 
     PhotoPreview {
         id : photoPreview
         anchors.fill : parent
         onClosed: cameraUI.state = "PhotoCapture"
-        visible: false
+        visible: cameraUI.state == "PhotoPreview"
         focus: visible
+    }
+
+    VideoOutput {
+        id: viewfinder
+        visible: cameraUI.state == "PhotoCapture"
+
+        x: 0
+        y: 0
+        width: parent.width - stillControls.buttonsPanelWidth
+        height: parent.height
+
+        source: camera
+        autoOrientation: true
     }
 
     PhotoCaptureControls {
         id: stillControls
         anchors.fill: parent
         camera: camera
-        visible: false
+        visible: cameraUI.state == "PhotoCapture"
         onPreviewSelected: cameraUI.state = "PhotoPreview"
     }
 }

@@ -140,7 +140,10 @@ FocusScope {
                 onClicked: Qt.quit()
             }
         }
+
+
     }
+
 
     ZoomControl {
         x : 0
