@@ -1,18 +1,27 @@
-#include <QGuiApplication>
-#include <QQuickView>
-#include <QQmlEngine>
+#include "EngineConfigurator.hpp"
 
+#include <QApplication>
+#include <QQmlApplicationEngine>
+
+//-----------------------------------------------------
+void registerMetaTypes()
+{
+//  qmlRegisterType<MyType>("MyUrl", 1, 0, "qmlName");
+}
+
+//-----------------------------------------------------
 int main(int argc, char* argv[])
 {
-    QGuiApplication app(argc,argv);
-    // TODO: use QQmlApplicationEngine
-    QQuickView view;
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    // Qt.quit() called in embedded .qml by default only emits
-    // quit() signal, so do this (optionally use Qt.exit()).
-    QObject::connect(view.engine(), SIGNAL(quit()), qApp, SLOT(quit()));
-    view.setSource(QUrl("qrc:/qml/PicturesTaker.qml"));
-    view.resize(800, 480);
-    view.show();
-    return app.exec();
+  QApplication app(argc,argv);
+
+//  QCoreApplication::setOrganizationName("Softosor");
+//  QCoreApplication::setOrganizationDomain("softosor.com");
+//  QCoreApplication::setApplicationName("Photosor");
+
+//  registerMetaTypes();
+  QQmlApplicationEngine engine;
+//  EngineConfigurator ec(engine);
+//  ec.loadQml(QUrl("qrc:/qml/main.qml"));
+  engine.load(QUrl("qrc:/qml/main.qml"));
+  return app.exec();
 }

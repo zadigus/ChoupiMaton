@@ -4,8 +4,9 @@ import QtMultimedia 5.4
 Rectangle {
     id : cameraUI
 
-    width: 800
-    height: 480
+    signal handle(string name)
+
+    anchors.fill: parent
 
     color: "black"
     state: "PhotoCapture"
@@ -27,13 +28,11 @@ Rectangle {
         id : photoPreview
         anchors.fill : parent
         onClosed: cameraUI.state = "PhotoCapture"
-        //visible: false //cameraUI.state == "PhotoPreview"
         focus: visible
     }
 
     VideoOutput {
         id: viewfinder
-        //visible: true //cameraUI.state == "PhotoCapture"
 
         x: 0
         y: 0
@@ -48,7 +47,6 @@ Rectangle {
         id: stillControls
         anchors.fill: parent
         camera: camera
-        //visible: true //cameraUI.state == "PhotoCapture"
         onPreviewSelected: cameraUI.state = "PhotoPreview"
     }
 
