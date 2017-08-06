@@ -11,5 +11,6 @@
         <file>CameraButton.qml</file>
         <file>CameraListPopup.qml</file>
         <file>CameraListButton.qml</file>
+        <file>PicturesTaker.qml</file>
     </qresource>
 </RCC>
