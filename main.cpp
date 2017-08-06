@@ -14,14 +14,15 @@ int main(int argc, char* argv[])
 {
   QApplication app(argc,argv);
 
-//  QCoreApplication::setOrganizationName("Softosor");
-//  QCoreApplication::setOrganizationDomain("softosor.com");
-//  QCoreApplication::setApplicationName("Photosor");
+  QCoreApplication::setOrganizationName("Softosor");
+  QCoreApplication::setOrganizationDomain("softosor.com");
+  QCoreApplication::setApplicationName("Photosor");
 
-//  registerMetaTypes();
+  registerMetaTypes();
+
   QQmlApplicationEngine engine;
-//  EngineConfigurator ec(engine);
-//  ec.loadQml(QUrl("qrc:/qml/main.qml"));
-  engine.load(QUrl("qrc:/qml/main.qml"));
+  EngineConfigurator ec(engine);
+  ec.loadQml(QUrl("qrc:/qml/main.qml"));
   return app.exec();
 }
+
