@@ -11,7 +11,8 @@ SOURCES += main.cpp \
 HEADERS += EngineConfigurator.hpp
 
 RESOURCES += gui/qml/qml.qrc \
- gui/images/images.qrc
+ gui/images/images.qrc \
+ gui/fonts/fonts.qrc
 
 INCLUDE_PATH += gui logic
 

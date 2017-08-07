@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/fonts">
+        <file>RujisHandwritingFont.ttf</file>
+        <file>RujisHandwritingFontv.2.0.ttf</file>
+	<file>AlexBrush-Regular.ttf</file>
+    </qresource>
+</RCC>

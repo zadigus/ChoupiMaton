@@ -10,6 +10,7 @@
         <file>camera_white_balance_flourescent.png</file>
         <file>camera_white_balance_incandescent.png</file>
         <file>camera_white_balance_sunny.png</file>
+	<file>kraft.jpg</file>
         <file>toolbutton.png</file>
         <file>toolbutton.sci</file>
     </qresource>
