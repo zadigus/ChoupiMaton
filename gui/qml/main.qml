@@ -9,7 +9,7 @@ Window {
 
   property var pages: {
     "start" : "qrc:/qml/Start.qml",
-    "takePics" : "qrc:/qml/PicturesTaker.qml"
+    "takePics" : "qrc:/qml/Camera/PicturesTaker.qml"
   }
 
   Loader {
