@@ -36,6 +36,38 @@ Rectangle {
     }
   }
 
+  Timer {
+    property int countDownStart : 3
+    property int currentTime : countDownStart
+    property int nbOfCaptures : camera.nbPreviews
+
+    interval: 1000
+    running: nbOfCaptures > 0
+    repeat: true
+
+    onTriggered: {
+      countDownText.text = (currentTime--).toString()
+
+      if(currentTime < 0)
+      {
+        if(camera.imageCapture.ready)
+        {
+          camera.imageCapture.capture()
+        }
+        currentTime = countDownStart
+        --nbOfCaptures
+      }
+    }
+  }
+
+  Text {
+    id: countDownText
+    anchors.centerIn: parent
+    z: 10
+    font.pixelSize: 500
+    color: "yellow"
+  }
+
   VideoOutput {
     id: videoOutput
 
@@ -46,16 +78,6 @@ Rectangle {
     fillMode: VideoOutput.PreserveAspectCrop
     autoOrientation: true
     visible: camera.imageCapture.ready
-
-    MouseArea {
-      anchors.fill: parent
-      onClicked: {
-        if(camera.imageCapture.ready)
-        {
-          camera.imageCapture.capture()
-        }
-      }
-    }
   }
 
   CameraNotAvailable {

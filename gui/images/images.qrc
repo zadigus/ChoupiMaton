@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/images">
-	<file>kraft.jpg</file>
+	<file alias="Kraft">kraft.jpg</file>
     </qresource>
 </RCC>

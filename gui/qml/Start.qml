@@ -10,17 +10,17 @@ Rectangle {
 
   Image {
     anchors.fill: parent
-    source: "qrc:/images/kraft.jpg"
+    source: "qrc:/images/Kraft"
   }
 
   FontLoader {
     id: titleFont
-    source: "qrc:/fonts/AlexBrush-Regular.ttf"
+    source: "qrc:/fonts/AlexBrush"
   }
 
   FontLoader {
     id: explanatoryFont
-    source: "qrc:/fonts/RujisHandwritingFont.ttf"
+    source: "qrc:/fonts/RujisHandWriting"
   }
 
   ColumnLayout {
@@ -73,10 +73,5 @@ Rectangle {
         onClicked: handle("takePics")
       }
     }
-
-//    Item {
-//      Layout.fillHeight: true
-//    }
-
   }
 }
