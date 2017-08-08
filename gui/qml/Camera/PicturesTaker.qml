@@ -1,91 +1,91 @@
 import QtQuick 2.0
-import QtMultimedia 5.4
+import QtMultimedia 5.8
+import QtQuick.Layouts 1.3
 
 Rectangle {
-    id : cameraUI
+  id : cameraUI
 
-    signal handle(string name)
+  signal handle(string name)
+
+  anchors.fill: parent
+
+  Camera {
+    id: camera
+
+    property int nbPreviews : 4
+    property int currentPreview: 0
+
+    captureMode: Camera.CaptureStillImage
+
+    // TODO: make the following parameters configurable
+    position: Camera.FrontFace
+    viewfinder.resolution: "1920x1080"
+    imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceManual
+    imageProcessing.manualWhiteBalance: 7000
+
+    imageCapture {
+      id: imgCapture
+
+      onImageCaptured: {
+        var imgPrev = imagePreviews.itemAt(currentPreview++)
+        if(imgPrev != null)
+        {
+          imgPrev.source = preview
+        }
+      }
+    }
+  }
+
+  VideoOutput {
+    id: videoOutput
 
     anchors.fill: parent
 
-    color: "black"
-    state: "PhotoCapture"
+    source: camera
 
-    Camera {
-        id: camera
-        captureMode: Camera.CaptureStillImage
+    fillMode: VideoOutput.PreserveAspectCrop
+    autoOrientation: true
+    visible: camera.imageCapture.ready
 
-        imageCapture {
-            onImageCaptured: {
-                photoPreview.source = preview
-                stillControls.previewAvailable = true
-                cameraUI.state = "PhotoPreview"
-            }
+    MouseArea {
+      anchors.fill: parent
+      onClicked: {
+        if(camera.imageCapture.ready)
+        {
+          camera.imageCapture.capture()
         }
+      }
+    }
+  }
+
+  CameraNotAvailable {
+    anchors.fill: parent
+    visible: !camera.imageCapture.ready
+  }
+
+  RowLayout {
+    id: row
+
+    anchors {
+      horizontalCenter: cameraUI.horizontalCenter
+      bottom: cameraUI.bottom
+      bottomMargin: 50
     }
 
-    PhotoPreview {
-        id : photoPreview
-        anchors.fill : parent
-        onClosed: cameraUI.state = "PhotoCapture"
-        focus: visible
-    }
+    spacing: 25
 
-    VideoOutput {
-        id: viewfinder
+    Repeater {
+      id: imagePreviews
+      model: camera.nbPreviews
+      ImagePreview {
+        height: mainWindow.height / 6
+        width: height / Math.sqrt(2)
 
-        x: 0
-        y: 0
-        width: parent.width - stillControls.buttonsPanelWidth
-        height: parent.height
-
-        source: camera
-        autoOrientation: true
-    }
-
-    PhotoCaptureControls {
-        id: stillControls
-        anchors.fill: parent
-        camera: camera
-        onPreviewSelected: cameraUI.state = "PhotoPreview"
-    }
-
-    states: [
-        State {
-            name: "PhotoCapture"
-            StateChangeScript {
-                script: {
-                    camera.captureMode = Camera.CaptureStillImage
-                    camera.start()
-                }
-            }
-            PropertyChanges {
-                target: photoPreview
-                visible: false
-            }
-            PropertyChanges {
-                target: viewfinder
-                visible: true
-            }
-            PropertyChanges {
-                target: stillControls
-                visible: true
-            }
-        },
-        State {
-            name: "PhotoPreview"
-            PropertyChanges {
-                target: photoPreview
-                visible: true
-            }
-            PropertyChanges {
-                target: viewfinder
-                visible: false
-            }
-            PropertyChanges {
-                target: stillControls
-                visible: false
-            }
+        MouseArea {
+          anchors.fill: parent
+          onClicked: handle("start")
         }
-    ]
+      }
+    }
+  }
 }

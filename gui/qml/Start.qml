@@ -33,7 +33,7 @@ Rectangle {
       Layout.alignment: Qt.AlignHCenter
       font {
         family: titleFont.name
-        pixelSize: 50
+        pixelSize: 150
       }
       text: "Le Choupimaton"
     }
