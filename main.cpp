@@ -22,6 +22,8 @@ int main(int argc, char* argv[])
 
   QQmlApplicationEngine engine;
   EngineConfigurator ec(engine);
+  ec.setupContext();
+  ec.setupSettings();
   ec.loadQml(QUrl("qrc:/qml/main.qml"));
   return app.exec();
 }

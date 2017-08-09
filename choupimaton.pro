@@ -6,14 +6,16 @@ CONFIG += c++11
 QT += quick qml multimedia widgets
 
 SOURCES += main.cpp \
-    EngineConfigurator.cpp
+    EngineConfigurator.cpp \
+    logic/PicturesProcessor/PicturesProcessor.cpp
 
-HEADERS += EngineConfigurator.hpp
+HEADERS += EngineConfigurator.hpp \
+    logic/PicturesProcessor/PicturesProcessor.hpp
 
 RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \
  gui/fonts/fonts.qrc
 
-INCLUDE_PATH += gui logic
+INCLUDEPATH += gui logic
 
 include(choupimaton.pri)
