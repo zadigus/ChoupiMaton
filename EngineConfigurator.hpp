@@ -12,6 +12,7 @@ class EngineConfigurator
 {
   public:
     EngineConfigurator(QQmlApplicationEngine& a_Engine);
+    virtual ~EngineConfigurator();
 
     void setupContext();
     void setupSettings();

@@ -31,18 +31,22 @@ Rectangle {
         if(imgPrev != null)
         {
           imgPrev.source = preview
+          picsProcessor.process(preview)
         }
       }
     }
   }
 
   Timer {
+    id: timer
+
     property int countDownStart : 3
     property int currentTime : countDownStart
     property int nbOfCaptures : camera.nbPreviews
+    property int currentNbOfCaptures : nbOfCaptures
 
     interval: 1000
-    running: nbOfCaptures > 0
+    running: currentNbOfCaptures > 0
     repeat: true
 
     onTriggered: {
@@ -55,7 +59,7 @@ Rectangle {
           camera.imageCapture.capture()
         }
         currentTime = countDownStart
-        --nbOfCaptures
+        --currentNbOfCaptures
       }
     }
   }

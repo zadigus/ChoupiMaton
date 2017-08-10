@@ -35,6 +35,8 @@ darwin {
         "            <string>UIInterfaceOrientationLandscapeLeft</string>" \
         "            <string>UIInterfaceOrientationLandscapeRight</string>" \
         "    </array>" \
+        "    <key>UIFileSharingEnabled</key>" \
+        "    <true/>" \
         "    <key>NSCameraUsageDescription</key>" \
         "    <string>Qt Multimedia Example</string>" \
         "    <key>NSMicrophoneUsageDescription</key>" \

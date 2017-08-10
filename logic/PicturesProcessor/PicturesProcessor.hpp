@@ -2,8 +2,6 @@
 #define PICTURESPROCESSOR_PICTURESPROCESSOR_HPP
 
 #include <QObject>
-#include <QList>
-#include <QImage>
 
 namespace N_PicturesProcessor {
 
@@ -19,10 +17,10 @@ namespace N_PicturesProcessor {
       Q_OBJECT
 
     public:
-      PicturesProcessor();
+      PicturesProcessor(QObject* a_Parent = Q_NULLPTR);
       virtual ~PicturesProcessor();
 
-      Q_INVOKABLE void process(const QList<QImage>& a_List);
+      Q_INVOKABLE void process(const QString& a_Path);
 
     private:
       Q_DISABLE_COPY(PicturesProcessor)
