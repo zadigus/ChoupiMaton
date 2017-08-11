@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/images">
 	<file alias="Kraft">kraft.jpg</file>
+	<file alias="RandomPreview1">RandomPreviews/random_1.png</file>
+	<file alias="RandomPreview2">RandomPreviews/random_2.png</file>
+	<file alias="RandomPreview3">RandomPreviews/random_3.png</file>
+	<file alias="RandomPreview4">RandomPreviews/random_4.png</file>
     </qresource>
 </RCC>
