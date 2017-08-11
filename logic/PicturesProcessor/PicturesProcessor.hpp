@@ -8,6 +8,7 @@
 
 namespace N_PicturesProcessor {
   class PictureSaver;
+  class PictureLayoutManager;
 }
 
 namespace N_PicturesProcessor {
@@ -28,6 +29,7 @@ namespace N_PicturesProcessor {
       virtual ~PicturesProcessor();
 
       Q_INVOKABLE void process(const QString& a_Path);
+      Q_INVOKABLE void reset(int a_Width, int a_Height);
 
     private:
       Q_DISABLE_COPY(PicturesProcessor)
@@ -35,7 +37,8 @@ namespace N_PicturesProcessor {
       QImage getImageFromPath(const QString& a_Path) const;
 
     private:
-      std::unique_ptr<PictureSaver> m_Saver;
+      PictureSaver* m_Saver;
+      PictureLayoutManager* m_LayoutMgr;
   };
 
 }

@@ -1,6 +1,7 @@
 #include "PicturesProcessor.hpp"
 
 #include "PictureSaver.hpp"
+#include "PictureLayoutManager.hpp"
 
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -11,8 +12,11 @@ namespace N_PicturesProcessor {
   //-----------------------------------------------------
   PicturesProcessor::PicturesProcessor(QObject* a_Parent)
     : QObject(a_Parent)
-    , m_Saver(new PictureSaver)
-  { }
+    , m_Saver(new PictureSaver(this))
+    , m_LayoutMgr(new PictureLayoutManager(this))
+  {
+    connect(m_LayoutMgr, SIGNAL(layoutFull(const QImage&)), m_Saver, SLOT(save(const QImage&)));
+  }
 
   //-----------------------------------------------------
   PicturesProcessor::~PicturesProcessor()
@@ -36,6 +40,12 @@ namespace N_PicturesProcessor {
   }
 
   //-----------------------------------------------------
+  void PicturesProcessor::reset(int a_Width, int a_Height)
+  {
+    m_LayoutMgr->reset(a_Width, a_Height);
+  }
+
+  //-----------------------------------------------------
   void PicturesProcessor::process(const QString& a_Path)
   {
     qInfo() << "Processing image <" << a_Path << ">";
@@ -43,7 +53,7 @@ namespace N_PicturesProcessor {
     auto img(getImageFromPath(a_Path));
     if(!img.isNull())
     {
-      m_Saver->save(img);
+      m_LayoutMgr->addPicture(img);
     }
   }
 }

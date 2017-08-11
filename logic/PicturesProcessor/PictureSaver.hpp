@@ -3,6 +3,7 @@
 
 #include "Global.hpp"
 
+#include <QObject>
 #include <QDir>
 #include <QString>
 #include <QRegExp>
@@ -11,17 +12,19 @@ class QImage;
 
 namespace N_PicturesProcessor {
 
-  class PictureSaver
+  class PictureSaver : public QObject
   {
+    Q_OBJECT
+
     public:
-      PictureSaver();
+      PictureSaver(QObject* a_Parent = Q_NULLPTR);
       virtual ~PictureSaver();
 
+    public slots:
       void save(const QImage& a_Img) const;
 
     private:
-      PictureSaver(const PictureSaver&) = delete;
-      PictureSaver& operator=(const PictureSaver&) = delete;
+      Q_DISABLE_COPY(PictureSaver)
 
       int getImgNbr() const;
       QString filename() const;

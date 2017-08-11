@@ -12,6 +12,13 @@ void registerMetaTypes()
 }
 
 //-----------------------------------------------------
+void initLogs()
+{
+  N_Logger::resetLogFile();
+  qInstallMessageHandler(N_Logger::message);
+}
+
+//-----------------------------------------------------
 int main(int argc, char* argv[])
 {
   QApplication app(argc,argv);
@@ -25,8 +32,7 @@ int main(int argc, char* argv[])
   QQmlApplicationEngine engine;
   EngineConfigurator ec(engine);
 
-  N_Logger::resetLogFile();
-  qInstallMessageHandler(N_Logger::message);
+//  initLogs();
 
   ec.setupContext();
   ec.setupSettings();

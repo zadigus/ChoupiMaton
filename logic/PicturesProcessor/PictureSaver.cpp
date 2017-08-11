@@ -24,7 +24,8 @@ namespace N_PicturesProcessor {
   }
 
   //-----------------------------------------------------
-  PictureSaver::PictureSaver()
+  PictureSaver::PictureSaver(QObject* a_Parent)
+    : QObject(a_Parent)
   { }
 
   //-----------------------------------------------------

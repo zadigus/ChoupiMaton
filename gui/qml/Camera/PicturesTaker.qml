@@ -35,6 +35,10 @@ Rectangle {
         }
       }
     }
+
+    Component.onCompleted: {
+      picsProcessor.reset(viewfinder.resolution.height, viewfinder.resolution.width)
+    }
   }
 
   Timer {
