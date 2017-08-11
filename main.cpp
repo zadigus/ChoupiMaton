@@ -1,5 +1,7 @@
 #include "EngineConfigurator.hpp"
 
+#include "Logger/Logger.hpp"
+
 #include <QApplication>
 #include <QQmlApplicationEngine>
 
@@ -22,6 +24,10 @@ int main(int argc, char* argv[])
 
   QQmlApplicationEngine engine;
   EngineConfigurator ec(engine);
+
+  N_Logger::resetLogFile();
+  qInstallMessageHandler(N_Logger::message);
+
   ec.setupContext();
   ec.setupSettings();
   ec.loadQml(QUrl("qrc:/qml/main.qml"));

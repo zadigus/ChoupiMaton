@@ -1,34 +1,27 @@
 #include "PicturesProcessor.hpp"
 
+#include "PictureSaver.hpp"
+
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickImageProvider>
-#include <QImage>
-#include <QStandardPaths>
-#include <QDir>
-
-#include <QDebug>
 
 namespace N_PicturesProcessor {
 
   //-----------------------------------------------------
   PicturesProcessor::PicturesProcessor(QObject* a_Parent)
     : QObject(a_Parent)
-  {
-
-  }
+    , m_Saver(new PictureSaver)
+  { }
 
   //-----------------------------------------------------
   PicturesProcessor::~PicturesProcessor()
-  {
-
-  }
+  { }
 
   //-----------------------------------------------------
-  void PicturesProcessor::process(const QString& a_Path)
+  QImage PicturesProcessor::getImageFromPath(const QString& a_Path) const
   {
     QUrl imgUrl(a_Path);
-
     if(auto engine = QQmlEngine::contextForObject(this)->engine())
     {
       if(auto imgProvider = dynamic_cast<QQuickImageProvider*>(engine->imageProvider(imgUrl.host())))
@@ -36,24 +29,21 @@ namespace N_PicturesProcessor {
         QSize imgSize;
         auto imgId(imgUrl.path().remove(0, 1));
         auto image(imgProvider->requestImage(imgId, &imgSize, imgSize));
-
-        if(!image.isNull())
-        {
-          qDebug() << "image size = " << image.width() << "x" << image.height();
-          QDir targetDir(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]); // this is special to ios
-          auto targetPath(targetDir.absoluteFilePath("imgId") + QString::fromStdString(".png"));
-          qDebug() << "target path = " << targetPath;
-          if(image.save(targetPath))
-          {
-            qDebug() << "Save successful";
-          }
-          else
-          {
-            qDebug() << "Save failed";
-          }
-          // TODO: get number of pics stored in the PicturesLocation and increment that
-        }
+        return image;
       }
+    }
+    return QImage();
+  }
+
+  //-----------------------------------------------------
+  void PicturesProcessor::process(const QString& a_Path)
+  {
+    qInfo() << "Processing image <" << a_Path << ">";
+
+    auto img(getImageFromPath(a_Path));
+    if(!img.isNull())
+    {
+      m_Saver->save(img);
     }
   }
 }

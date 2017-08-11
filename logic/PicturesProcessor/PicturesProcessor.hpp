@@ -1,7 +1,14 @@
 #ifndef PICTURESPROCESSOR_PICTURESPROCESSOR_HPP
 #define PICTURESPROCESSOR_PICTURESPROCESSOR_HPP
 
+#include "Global.hpp"
+
 #include <QObject>
+#include <QImage>
+
+namespace N_PicturesProcessor {
+  class PictureSaver;
+}
 
 namespace N_PicturesProcessor {
 
@@ -24,6 +31,11 @@ namespace N_PicturesProcessor {
 
     private:
       Q_DISABLE_COPY(PicturesProcessor)
+
+      QImage getImageFromPath(const QString& a_Path) const;
+
+    private:
+      std::unique_ptr<PictureSaver> m_Saver;
   };
 
 }
