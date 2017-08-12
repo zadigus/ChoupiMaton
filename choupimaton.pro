@@ -30,4 +30,8 @@ RESOURCES += gui/qml/qml.qrc \
 
 INCLUDEPATH += gui logic core
 
-include(choupimaton.pri)
+ios {
+    QMAKE_INFO_PLIST = ios/Info.plist
+    ios_icon.files = $$files($$PWD/icons/icon*.png)
+    QMAKE_BUNDLE_DATA += ios_icon
+}

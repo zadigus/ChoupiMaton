@@ -116,6 +116,13 @@ Rectangle {
           onClicked: handle("start")
         }
       }
+
+      Component.onCompleted: {
+        for(var i=0; i<imagePreviews.count; ++i)
+        {
+          imagePreviews.itemAt(i).source = "qrc:/images/RandomPreview" + (i+1)
+        }
+      }
     }
   }
 }
