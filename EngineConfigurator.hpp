@@ -5,6 +5,8 @@ namespace N_PicturesProcessor {
   class PicturesProcessor;
 }
 
+class AppConfiguration;
+
 class QQmlApplicationEngine;
 class QUrl;
 
@@ -27,6 +29,7 @@ class EngineConfigurator
   private:
     QQmlApplicationEngine& m_Engine;
 
+    AppConfiguration* m_AppConfig;
     N_PicturesProcessor::PicturesProcessor* m_PicsProc;
 };
 

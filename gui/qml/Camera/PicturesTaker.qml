@@ -17,11 +17,11 @@ Rectangle {
 
     captureMode: Camera.CaptureStillImage
 
-    // TODO: make the following parameters configurable
-    position: Camera.FrontFace
-    viewfinder.resolution: "1920x1080"
+    position: appConfig.cameraPosition
+    viewfinder.resolution: appConfig.resolution
     imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceManual
-    imageProcessing.manualWhiteBalance: 7000
+    imageProcessing.manualWhiteBalance: appConfig.colorTemp
+    digitalZoom: appConfig.zoom
 
     imageCapture {
       id: imgCapture

@@ -2,8 +2,16 @@
     <qresource prefix="/qml">
         <file>Camera/PicturesTaker.qml</file>
         <file>main.qml</file>
+	<file>BurgerMenu.qml</file>
         <file>Start.qml</file>
         <file>Camera/ImagePreview.qml</file>
         <file>Camera/CameraNotAvailable.qml</file>
+	<file>Camera/CameraConfiguration.qml</file>
+	<file>Camera/ParamIndicator.qml</file>
+	<file>Camera/CameraListButton.qml</file>
+	<file>Camera/CameraListPopup.qml</file>
+	<file>Camera/ResolutionListButton.qml</file>
+	<file>Camera/ResolutionListPopup.qml</file>
+	<file>Camera/Popup.qml</file>
     </qresource>
 </RCC>

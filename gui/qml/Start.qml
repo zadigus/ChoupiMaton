@@ -23,6 +23,12 @@ Rectangle {
     source: "qrc:/fonts/RujisHandWriting"
   }
 
+  BurgerMenu {
+    width: 32
+    height: 32
+    onHandle: startUI.handle(name)
+  }
+
   ColumnLayout {
 
     anchors.fill: parent

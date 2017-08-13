@@ -10,6 +10,7 @@ CORE_FOLDER = core
 
 SOURCES += main.cpp \
     EngineConfigurator.cpp \
+    AppConfiguration.cpp \
     $${PICSPROC_FOLDER}/PicturesProcessor.cpp \
     $${PICSPROC_FOLDER}/PictureSaver.cpp \
     $${CORE_FOLDER}/Utils.cpp \
@@ -17,6 +18,7 @@ SOURCES += main.cpp \
     logic/PicturesProcessor/PictureLayoutManager.cpp
 
 HEADERS += EngineConfigurator.hpp \
+    AppConfiguration.hpp \
     $${PICSPROC_FOLDER}/PicturesProcessor.hpp \
     $${PICSPROC_FOLDER}/PictureSaver.hpp \
     $${CORE_FOLDER}/Utils.hpp \
