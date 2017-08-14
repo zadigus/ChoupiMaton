@@ -17,17 +17,15 @@ Rectangle {
     property int currentPreview: 0
 
     captureMode: Camera.CaptureStillImage
-
-    position: appConfig.cameraPosition
-    viewfinder.resolution: appConfig.resolution
     imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceManual
 
     imageCapture {
       id: imgCapture
     }
 
-    Component.onCompleted: resolutionList.model = supportedViewfinderResolutions()
-
+    Component.onCompleted: {
+      resolutionList.model = supportedViewfinderResolutions()
+    }
   }
 
   VideoOutput {
@@ -74,6 +72,8 @@ Rectangle {
         to: 8000
         value: appConfig.colorTemp
         stepSize: 100
+
+        onValueChanged: console.log("lock status = " + camera.lockStatus)
 
         Binding {
           target: appConfig
@@ -123,6 +123,12 @@ Rectangle {
         Binding {
           target: appConfig
           property: "cameraPosition"
+          value: cameraList.value
+        }
+
+        Binding {
+          target: camera
+          property: "position"
           value: cameraList.value
         }
       }

@@ -35,5 +35,6 @@ INCLUDEPATH += gui logic core
 ios {
     QMAKE_INFO_PLIST = ios/Info.plist
     ios_icon.files = $$files($$PWD/icons/icon*.png)
-    QMAKE_BUNDLE_DATA += ios_icon
+    launch_image.files = $$files($$PWD/ios/LaunchScreen/softozor.*)
+    QMAKE_BUNDLE_DATA += ios_icon launch_image
 }
