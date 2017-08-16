@@ -62,6 +62,7 @@ namespace N_PicturesProcessor {
   //-----------------------------------------------------
   void PictureSaver::save(const QImage& a_Img) const
   {
+    qInfo() << "Started saving";
     auto targetPath(TARGET_DIR.absoluteFilePath(filename()));
     if(a_Img.save(targetPath))
     {

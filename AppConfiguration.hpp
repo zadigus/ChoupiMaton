@@ -16,6 +16,9 @@ class AppConfiguration : public QObject
   Q_PROPERTY(qreal colorTemp READ colorTemp WRITE setColorTemp NOTIFY colorTempChanged)
   Q_PROPERTY(QSize resolution READ resolution WRITE setResolution NOTIFY resolutionChanged)
   Q_PROPERTY(QCamera::Position cameraPosition READ cameraPosition WRITE setCameraPosition NOTIFY cameraPositionChanged)
+  Q_PROPERTY(qreal bottomMarginRatio READ bottomMarginRatio WRITE setBottomMarginRatio NOTIFY bottomMarginRatioChanged)
+  Q_PROPERTY(qreal scaleFactor READ scaleFactor WRITE setScaleFactor NOTIFY scaleFactorChanged)
+  Q_PROPERTY(qreal rotationAngle READ rotationAngle WRITE setRotationAngle NOTIFY rotationAngleChanged)
 
   public:
     explicit AppConfiguration(QObject* a_Parent = 0);
@@ -32,6 +35,15 @@ class AppConfiguration : public QObject
     QCamera::Position cameraPosition() const;
     void setCameraPosition(const QCamera::Position& a_Value);
 
+    qreal bottomMarginRatio() const;
+    void setBottomMarginRatio(qreal a_Value);
+
+    qreal scaleFactor() const;
+    void setScaleFactor(qreal a_Value);
+
+    qreal rotationAngle() const;
+    void setRotationAngle(qreal a_Value);
+
   public slots:
 
   private:
@@ -41,6 +53,9 @@ class AppConfiguration : public QObject
     void colorTempChanged();
     void resolutionChanged();
     void cameraPositionChanged();
+    void bottomMarginRatioChanged();
+    void scaleFactorChanged();
+    void rotationAngleChanged();
 
   private:
     mutable QSettings m_Settings;

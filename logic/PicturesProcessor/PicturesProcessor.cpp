@@ -40,9 +40,9 @@ namespace N_PicturesProcessor {
   }
 
   //-----------------------------------------------------
-  void PicturesProcessor::reset(int a_Width, int a_Height)
+  void PicturesProcessor::reset(int a_Width, int a_Height, qreal a_ScaleFactor, qreal a_RotationAngle, qreal a_BottomMarginRatio)
   {
-    m_LayoutMgr->reset(a_Width, a_Height);
+    m_LayoutMgr->reset(a_Width, a_Height, a_ScaleFactor, a_RotationAngle, a_BottomMarginRatio);
   }
 
   //-----------------------------------------------------

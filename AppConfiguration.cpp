@@ -88,3 +88,57 @@ void AppConfiguration::setCameraPosition(const QCamera::Position& a_Value)
   m_Settings.endGroup();
   emit cameraPositionChanged();
 }
+
+//----------------------------------------------------------------------------------------------
+qreal AppConfiguration::bottomMarginRatio() const
+{
+  m_Settings.beginGroup("PicLayout");
+  auto result(m_Settings.value("bottomMarginRatio", 0.15).toReal());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
+void AppConfiguration::setBottomMarginRatio(qreal a_Value)
+{
+  m_Settings.beginGroup("PicLayout");
+  m_Settings.setValue("bottomMarginRatio", a_Value);
+  m_Settings.endGroup();
+  emit bottomMarginRatioChanged();
+}
+
+//----------------------------------------------------------------------------------------------
+qreal AppConfiguration::scaleFactor() const
+{
+  m_Settings.beginGroup("PicLayout");
+  auto result(m_Settings.value("scaleFactor", 0.85).toReal());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
+void AppConfiguration::setScaleFactor(qreal a_Value)
+{
+  m_Settings.beginGroup("PicLayout");
+  m_Settings.setValue("scaleFactor", a_Value);
+  m_Settings.endGroup();
+  emit scaleFactorChanged();
+}
+
+//----------------------------------------------------------------------------------------------
+qreal AppConfiguration::rotationAngle() const
+{
+  m_Settings.beginGroup("PicLayout");
+  auto result(m_Settings.value("rotationAngle", -90).toReal());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
+void AppConfiguration::setRotationAngle(qreal a_Value)
+{
+  m_Settings.beginGroup("PicLayout");
+  m_Settings.setValue("rotationAngle", a_Value);
+  m_Settings.endGroup();
+  emit rotationAngleChanged();
+}

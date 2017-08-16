@@ -37,7 +37,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-      picsProcessor.reset(viewfinder.resolution.height, viewfinder.resolution.width)
+      picsProcessor.reset(viewfinder.resolution.height, viewfinder.resolution.width, appConfig.scaleFactor, appConfig.rotationAngle, appConfig.bottomMarginRatio)
     }
   }
 
