@@ -43,12 +43,6 @@ namespace N_PicturesProcessor {
   }
 
   //-----------------------------------------------------
-  bool PictureLayoutManager::isFull() const
-  {
-    return m_CurrentPicture == NB_COLS * NB_ROWS;
-  }
-
-  //-----------------------------------------------------
   int PictureLayoutManager::x() const
   {
     auto currentCol(m_CurrentPicture % NB_COLS);
@@ -72,11 +66,6 @@ namespace N_PicturesProcessor {
       qInfo() << "Drawing picture <" << m_CurrentPicture << "> at (x, y) = (" << x() << ", " << y() << ")";
       painter.drawImage(x(), y(), img);
       ++m_CurrentPicture;
-
-      if(isFull())
-      {
-        emit layoutFull(m_Output);
-      }
     }
     else
     {

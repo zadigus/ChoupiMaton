@@ -64,7 +64,7 @@ namespace N_PicturesProcessor {
   {
     qInfo() << "Started saving";
     auto targetPath(TARGET_DIR.absoluteFilePath(filename()));
-    if(a_Img.save(targetPath))
+    if(a_Img.save(targetPath, "PNG"))
     {
       qInfo() << "Saved image to path <" << targetPath << ">";
     }

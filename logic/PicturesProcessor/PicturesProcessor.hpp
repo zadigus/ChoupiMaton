@@ -30,6 +30,7 @@ namespace N_PicturesProcessor {
 
       Q_INVOKABLE void process(const QString& a_Path);
       Q_INVOKABLE void reset(int a_Width, int a_Height, qreal a_ScaleFactor, qreal a_RotationAngle, qreal a_BottomMarginRatio);
+      Q_INVOKABLE void save();
 
     private:
       Q_DISABLE_COPY(PicturesProcessor)

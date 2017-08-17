@@ -14,9 +14,7 @@ namespace N_PicturesProcessor {
     : QObject(a_Parent)
     , m_Saver(new PictureSaver(this))
     , m_LayoutMgr(new PictureLayoutManager(this))
-  {
-    connect(m_LayoutMgr, SIGNAL(layoutFull(const QImage&)), m_Saver, SLOT(save(const QImage&)));
-  }
+  { }
 
   //-----------------------------------------------------
   PicturesProcessor::~PicturesProcessor()
@@ -56,4 +54,12 @@ namespace N_PicturesProcessor {
       m_LayoutMgr->addPicture(img);
     }
   }
+
+  //-----------------------------------------------------
+  void PicturesProcessor::save()
+  {
+    auto output(m_LayoutMgr->getOutput());
+    m_Saver->save(output);
+  }
+
 }

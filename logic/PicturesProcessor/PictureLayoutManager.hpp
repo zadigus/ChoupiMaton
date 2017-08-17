@@ -18,15 +18,11 @@ namespace N_PicturesProcessor {
 
       void reset(int a_SinglePictureWidth, int a_SinglePictureHeight, qreal a_ScaleFactor, qreal a_RotationAngle, qreal a_BottomMarginRatio);
       void addPicture(const QImage& a_Img);
+      QImage getOutput() const;
 
     private:
-      bool isFull() const;
-
       int x() const;
       int y() const;
-
-    signals:
-      void layoutFull(const QImage& a_Img);
 
     private:
       Q_DISABLE_COPY(PictureLayoutManager)
@@ -56,6 +52,10 @@ namespace N_PicturesProcessor {
   inline PictureLayoutManager::~PictureLayoutManager()
   { }
 
+  inline QImage PictureLayoutManager::getOutput() const
+  {
+    return m_Output;
+  }
 }
 
 #endif // PICTURESPROCESSOR_PICTURELAYOUTMANAGER_HPP

@@ -20,7 +20,6 @@ namespace N_PicturesProcessor {
       PictureSaver(QObject* a_Parent = Q_NULLPTR);
       virtual ~PictureSaver();
 
-    public slots:
       void save(const QImage& a_Img) const;
 
     private:

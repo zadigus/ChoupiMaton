@@ -50,19 +50,31 @@ Rectangle {
     property int currentNbOfCaptures : nbOfCaptures
 
     interval: 1000
-    running: currentNbOfCaptures > 0
+    running: currentNbOfCaptures >= 0
     repeat: true
 
     onTriggered: {
       countDownText.text = (currentTime--).toString()
 
-      if(currentTime < 0)
+      if(currentNbOfCaptures > 0)
       {
-        if(camera.imageCapture.ready)
+        if(currentTime < 0)
         {
-          camera.imageCapture.capture()
+          if(camera.imageCapture.ready)
+          {
+            camera.imageCapture.capture()
+          }
+          currentTime = countDownStart
+          --currentNbOfCaptures
         }
-        currentTime = countDownStart
+      }
+      else
+      {
+        // it is important to save at this point
+        // if we do it right after the last capture,
+        // the last preview takes about 6 seconds to appear...
+        picsProcessor.save()
+        // TODO: print!
         --currentNbOfCaptures
       }
     }
