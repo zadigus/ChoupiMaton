@@ -48,6 +48,14 @@ namespace N_PicturesProcessor {
     return ++max;
   }
 
+#ifndef Q_OS_DARWIN
+  //-----------------------------------------------------
+  void PictureSaver::print(const QString& a_ImgPath) const
+  {
+    qCritical() << "Printing not implemented for this OS.";
+  }
+#endif
+
   //-----------------------------------------------------
   QString PictureSaver::filename() const
   {
@@ -72,6 +80,7 @@ namespace N_PicturesProcessor {
     {
       qCritical() << "Unable to save image to path <" << targetPath << ">";
     }
+    print(targetPath);
   }
 
 }

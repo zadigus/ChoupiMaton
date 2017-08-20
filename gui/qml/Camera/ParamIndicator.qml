@@ -12,82 +12,32 @@ ColumnLayout {
 
   spacing: 25
 
-  Text {
-    id: paramName
-    font: control.font
+  RowLayout {
+    spacing: 10
     Layout.alignment: Qt.AlignHCenter
-    color: "white"
+
+    Text {
+      id: paramName
+      Layout.alignment: Qt.AlignLeft
+      color: "white"
+    }
+
+    Text {
+      id: controlDisplay
+      Layout.alignment: Qt.AlignRight
+      color: "white"
+    }
   }
 
-  SpinBox {
+  Slider {
     id: control
-    editable: true
 
     Layout.alignment: Qt.AlignHCenter
 
-    contentItem: TextInput {
-      z: 2
-      text: control.textFromValue(control.value, control.locale)
-
-      font: control.font
-      color: "#21be2b"
-      selectionColor: "#21be2b"
-      selectedTextColor: "#ffffff"
-      horizontalAlignment: Qt.AlignHCenter
-      verticalAlignment: Qt.AlignVCenter
-
-      readOnly: !control.editable
-      validator: control.validator
-      inputMethodHints: Qt.ImhFormattedNumbersOnly
-    }
-
-    up {
-      id: upIndic
-      indicator: Rectangle {
-        x: control.mirrored ? 0 : parent.width - width
-        height: parent.height
-        implicitWidth: 40
-        implicitHeight: 40
-        color: upIndic.pressed ? "#e4e4e4" : "#f6f6f6"
-        border.color: enabled ? "#21be2b" : "#bdbebf"
-
-        Text {
-          text: "+"
-          font.pixelSize: control.font.pixelSize * 2
-          color: "#21be2b"
-          anchors.fill: parent
-          fontSizeMode: Text.Fit
-          horizontalAlignment: Text.AlignHCenter
-          verticalAlignment: Text.AlignVCenter
-        }
-      }
-    }
-
-    down {
-      id: downIndic
-      indicator: Rectangle {
-        x: control.mirrored ? parent.width - width : 0
-        height: parent.height
-        implicitWidth: 40
-        implicitHeight: 40
-        color: downIndic.pressed ? "#e4e4e4" : "#f6f6f6"
-        border.color: enabled ? "#21be2b" : "#bdbebf"
-
-        Text {
-          text: "-"
-          font.pixelSize: control.font.pixelSize * 2
-          color: "#21be2b"
-          anchors.fill: parent
-          fontSizeMode: Text.Fit
-          horizontalAlignment: Text.AlignHCenter
-          verticalAlignment: Text.AlignVCenter
-        }
-      }
-    }
-
-    background: Rectangle {
-      implicitWidth: 140
-      border.color: "#bdbebf"
+    Binding {
+      target: controlDisplay
+      property: "text"
+      value: Math.round(control.value * 10) / 10
     }
   }
 }

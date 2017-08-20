@@ -4,6 +4,8 @@
 
 #include "PicturesProcessor/PicturesProcessor.hpp"
 
+#include "PrinterManager/PrinterManager.hpp"
+
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
@@ -12,6 +14,7 @@ EngineConfigurator::EngineConfigurator(QQmlApplicationEngine& a_Engine)
   : m_Engine(a_Engine)
   , m_AppConfig(new AppConfiguration)
   , m_PicsProc(new N_PicturesProcessor::PicturesProcessor)
+  , m_PrinterMgr(new N_PrinterManager::PrinterManager)
 { }
 
 //-----------------------------------------------------
@@ -33,6 +36,8 @@ void EngineConfigurator::setupContext()
 
   context->setContextProperty("picsProcessor", m_PicsProc);
   QQmlEngine::setContextForObject(m_PicsProc, context);
+
+  context->setContextProperty("printerMgr", m_PrinterMgr);
 
   setupConnections();
 }

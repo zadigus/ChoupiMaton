@@ -5,6 +5,10 @@ namespace N_PicturesProcessor {
   class PicturesProcessor;
 }
 
+namespace N_PrinterManager {
+  class PrinterManager;
+}
+
 class AppConfiguration;
 
 class QQmlApplicationEngine;
@@ -31,6 +35,7 @@ class EngineConfigurator
 
     AppConfiguration* m_AppConfig;
     N_PicturesProcessor::PicturesProcessor* m_PicsProc;
+    N_PrinterManager::PrinterManager* m_PrinterMgr;
 };
 
 #endif // ENGINECONFIGURATOR_HPP

@@ -23,6 +23,11 @@ Button {
     }
 
     MenuItem {
+      text: qsTr("Configure printer...")
+      onTriggered: printerMgr.setupPrinter()
+    }
+
+    MenuItem {
       text: qsTr("Quit")
       onTriggered: Qt.quit()
     }

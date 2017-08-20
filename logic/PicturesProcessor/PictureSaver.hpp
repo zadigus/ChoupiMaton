@@ -21,6 +21,7 @@ namespace N_PicturesProcessor {
       virtual ~PictureSaver();
 
       void save(const QImage& a_Img) const;
+      void print(const QString& a_ImgPath) const;
 
     private:
       Q_DISABLE_COPY(PictureSaver)
