@@ -6,6 +6,8 @@ namespace N_PrinterManager {
   class PrinterManager;
 }
 
+class QWidget;
+
 namespace N_PrinterManager {
 
   //-----------------------------------------------------
@@ -19,6 +21,7 @@ namespace N_PrinterManager {
 
     private:
       UIPrinter* m_Printer;
+      QWidget* m_Dialog;
   };
 
 }

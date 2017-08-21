@@ -3,7 +3,7 @@ TARGET = choupimaton
 
 CONFIG += c++11
 
-QT += quick qml multimedia widgets gui-private
+QT += quick qml multimedia widgets
 
 PICSPROC_FOLDER = logic/PicturesProcessor
 PRINTERMANAGER_FOLDER = logic/PrinterManager
