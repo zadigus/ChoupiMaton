@@ -20,8 +20,9 @@ namespace N_PicturesProcessor {
       PictureSaver(QObject* a_Parent = Q_NULLPTR);
       virtual ~PictureSaver();
 
-      void save(const QImage& a_Img) const;
-      void print(const QString& a_ImgPath) const;
+      QString save(const QImage& a_Img);
+
+      QString getPicturePath() const;
 
     private:
       Q_DISABLE_COPY(PictureSaver)
@@ -37,6 +38,8 @@ namespace N_PicturesProcessor {
       static const QString FILE_SEP;
       static const QString FILE_EXT;
       static const QRegExp FILENAME_PATTERN; // must be defined last as it depends on the other ones
+
+      QString m_LastPicturePath;
   };
 
   //==============================
@@ -49,6 +52,10 @@ namespace N_PicturesProcessor {
   inline PictureSaver::~PictureSaver()
   { }
 
+  inline QString PictureSaver::getPicturePath() const
+  {
+    return m_LastPicturePath;
+  }
 }
 
 #endif // PICTURESPROCESSOR_PICTURESAVER_H

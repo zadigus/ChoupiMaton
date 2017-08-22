@@ -41,8 +41,7 @@ ios {
     ios_icon.files = $$files($$PWD/icons/icon*.png)
     launch_image.files = $$files($$PWD/ios/LaunchScreen/softozor.*)
     QMAKE_BUNDLE_DATA += ios_icon launch_image
-    OBJECTIVE_SOURCES += $${PICSPROC_FOLDER}/PictureSaver.mm \
-        $${PRINTERMANAGER_FOLDER}/PrinterManager.mm \
+    OBJECTIVE_SOURCES += $${PRINTERMANAGER_FOLDER}/PrinterManager.mm \
         $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.mm \
         $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.hpp
 }

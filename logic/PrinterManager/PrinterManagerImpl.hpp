@@ -3,6 +3,8 @@
 
 #include "Global.hpp"
 
+class QString;
+
 namespace N_PrinterManager {
 
   class PrinterManagerImpl
@@ -12,6 +14,7 @@ namespace N_PrinterManager {
       virtual ~PrinterManagerImpl();
 
       virtual void setupPrinter() = 0;
+      virtual void print(const QString& a_PathToImg) const = 0;
 
     private:
       Q_DISABLE_COPY(PrinterManagerImpl)

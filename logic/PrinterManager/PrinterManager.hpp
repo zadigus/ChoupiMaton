@@ -20,6 +20,7 @@ namespace N_PrinterManager {
       virtual ~PrinterManager();
 
       Q_INVOKABLE void setupPrinter();
+      Q_INVOKABLE void print(const QString& a_PathToImg) const;
 
     private:
       Q_DISABLE_COPY(PrinterManager)

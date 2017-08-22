@@ -20,4 +20,10 @@ namespace N_PrinterManager {
     m_Impl->setupPrinter();
   }
 
+  //-----------------------------------------------------
+  void PrinterManager::print(const QString& a_PathToImg) const
+  {
+    m_Impl->print(a_PathToImg);
+  }
+
 }

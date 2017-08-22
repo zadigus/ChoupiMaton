@@ -62,4 +62,10 @@ namespace N_PicturesProcessor {
     m_Saver->save(output);
   }
 
+  //-----------------------------------------------------
+  QString PicturesProcessor::pathToPicture() const
+  {
+    return m_Saver->getPicturePath();
+  }
+
 }

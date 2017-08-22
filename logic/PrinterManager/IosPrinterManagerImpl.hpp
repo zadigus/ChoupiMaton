@@ -18,6 +18,7 @@ namespace N_PrinterManager {
       virtual ~IosPrinterManagerImpl();
 
       virtual void setupPrinter() override;
+      virtual void print(const QString& a_PathToImg) const override;
 
     private:
       UIPrinter* m_Printer;

@@ -48,14 +48,6 @@ namespace N_PicturesProcessor {
     return ++max;
   }
 
-#ifndef Q_OS_DARWIN
-  //-----------------------------------------------------
-  void PictureSaver::print(const QString& a_ImgPath) const
-  {
-    qCritical() << "Printing not implemented for this OS.";
-  }
-#endif
-
   //-----------------------------------------------------
   QString PictureSaver::filename() const
   {
@@ -68,19 +60,17 @@ namespace N_PicturesProcessor {
   }
 
   //-----------------------------------------------------
-  void PictureSaver::save(const QImage& a_Img) const
+  QString PictureSaver::save(const QImage& a_Img)
   {
     qInfo() << "Started saving";
-    auto targetPath(TARGET_DIR.absoluteFilePath(filename()));
-    if(a_Img.save(targetPath, "PNG"))
+    m_LastPicturePath = TARGET_DIR.absoluteFilePath(filename());
+    if(a_Img.save(m_LastPicturePath, "PNG"))
     {
-      qInfo() << "Saved image to path <" << targetPath << ">";
+      qInfo() << "Saved image to path <" << m_LastPicturePath << ">";
+      return m_LastPicturePath;
     }
-    else
-    {
-      qCritical() << "Unable to save image to path <" << targetPath << ">";
-    }
-    print(targetPath);
+    qCritical() << "Unable to save image to path <" << m_LastPicturePath << ">";
+    return QString();
   }
 
 }

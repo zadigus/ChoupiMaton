@@ -74,7 +74,7 @@ Rectangle {
         // if we do it right after the last capture,
         // the last preview takes about 6 seconds to appear...
         picsProcessor.save()
-        // TODO: print!
+        printerMgr.print(picsProcessor.pathToPicture)
         --currentNbOfCaptures
       }
     }
