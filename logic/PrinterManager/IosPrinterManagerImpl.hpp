@@ -2,10 +2,6 @@
 
 #import <UIKit/UIPrinter.h>
 
-namespace N_PrinterManager {
-  class PrinterManager;
-}
-
 class QWidget;
 
 namespace N_PrinterManager {

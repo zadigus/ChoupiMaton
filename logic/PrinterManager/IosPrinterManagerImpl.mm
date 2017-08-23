@@ -1,13 +1,9 @@
 #import "IosPrinterManagerImpl.hpp"
 
-#import "PrinterManager.hpp"
-
 #import <QApplication>
 #import <QWidget>
-#import <QDialog>
 #import <QWindow>
-#import <QQmlApplicationEngine>
-#import <QQmlContext>
+#import <QUrl>
 
 #import <UIKit/UIPrinterPickerController.h>
 #import <UIKit/UIPrintInteractionController.h>
