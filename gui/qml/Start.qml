@@ -1,6 +1,8 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
 
+import PrinterSetup 1.0
+
 Rectangle {
   id: startUI
 
@@ -79,5 +81,11 @@ Rectangle {
         onClicked: handle("takePics")
       }
     }
+
+    PrinterSetup {
+      x: 500
+      y: 500
+    }
+
   }
 }

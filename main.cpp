@@ -2,13 +2,15 @@
 
 #include "Logger/Logger.hpp"
 
+#include "PrinterSetup/PrinterSetup.hpp"
+
 #include <QApplication>
 #include <QQmlApplicationEngine>
 
 //-----------------------------------------------------
 void registerMetaTypes()
 {
-//  qmlRegisterType<MyType>("MyUrl", 1, 0, "qmlName");
+  qmlRegisterType<N_PrinterSetup::PrinterSetup>("PrinterSetup", 1, 0, "PrinterSetup");
 }
 
 //-----------------------------------------------------

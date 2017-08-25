@@ -8,6 +8,7 @@ QT += quick qml multimedia widgets
 PICSPROC_FOLDER = logic/PicturesProcessor
 PRINTERMANAGER_FOLDER = logic/PrinterManager
 CORE_FOLDER = core
+PRINTERSETUP_FOLDER = gui/PrinterSetup
 
 SOURCES += main.cpp \
     EngineConfigurator.cpp \
@@ -17,7 +18,8 @@ SOURCES += main.cpp \
     $${PICSPROC_FOLDER}/PictureLayoutManager.cpp \
     $${CORE_FOLDER}/Utils.cpp \
     $${CORE_FOLDER}/Logger/Logger.cpp \
-    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp
+    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp #\
+#    $${PRINTERSETUP_FOLDER}/PrinterSetupPlugin.cpp
 
 HEADERS += EngineConfigurator.hpp \
     AppConfiguration.hpp \
@@ -28,7 +30,10 @@ HEADERS += EngineConfigurator.hpp \
     $${CORE_FOLDER}/Global.hpp \
     $${CORE_FOLDER}/Logger/Logger.hpp \
     $${PRINTERMANAGER_FOLDER}/PrinterManager.hpp \
-    $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp
+    $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
+    $${PRINTERSETUP_FOLDER}/PrinterSetup.hpp #\
+#    $${PRINTERSETUP_FOLDER}/PrinterSetupPlugin.hpp
+
 
 RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \
@@ -43,5 +48,6 @@ ios {
     QMAKE_BUNDLE_DATA += ios_icon launch_image
     OBJECTIVE_SOURCES += $${PRINTERMANAGER_FOLDER}/PrinterManager.mm \
         $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.mm \
-        $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.hpp
+        $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.hpp \
+        $${PRINTERSETUP_FOLDER}/PrinterSetup.mm
 }

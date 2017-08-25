@@ -14,6 +14,7 @@ namespace N_PrinterManager {
   //-----------------------------------------------------
   IosPrinterManagerImpl::IosPrinterManagerImpl()
     : PrinterManagerImpl()
+    , m_Printer(Q_NULLPTR)
     , m_Dialog(new QWidget(QApplication::activeWindow()))
   {
     m_Dialog->setGeometry(0, 0, 100, 100);
