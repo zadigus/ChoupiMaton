@@ -9,6 +9,10 @@ namespace N_PrinterManager {
   class PrinterManagerImpl;
 }
 
+namespace N_IosPrinterSetup {
+  class PrinterData;
+}
+
 namespace N_PrinterManager {
 
   class PrinterManager : public QObject
@@ -19,8 +23,8 @@ namespace N_PrinterManager {
       PrinterManager(QObject* a_Parent = Q_NULLPTR);
       virtual ~PrinterManager();
 
-      Q_INVOKABLE void setupPrinter();
       Q_INVOKABLE void print(const QString& a_PathToImg) const;
+      Q_INVOKABLE void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data);
 
     private:
       Q_DISABLE_COPY(PrinterManager)

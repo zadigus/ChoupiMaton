@@ -1,7 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
 
-import PrinterSetup 1.0
+import IosPrinterSetup 1.0
 
 Rectangle {
   id: startUI
@@ -82,9 +82,14 @@ Rectangle {
       }
     }
 
-    PrinterSetup {
+    IosPrinterSetup {
+      id: printerSetup
       x: 500
       y: 500
+      onPrinterDataChanged: {
+        console.log("printer data changed")
+        printerMgr.setPrinterData(printerSetup.printerData)
+      }
     }
 
   }

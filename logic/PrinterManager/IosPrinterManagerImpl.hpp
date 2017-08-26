@@ -2,8 +2,6 @@
 
 #import <UIKit/UIPrinter.h>
 
-class QWidget;
-
 namespace N_PrinterManager {
 
   //-----------------------------------------------------
@@ -13,12 +11,11 @@ namespace N_PrinterManager {
       IosPrinterManagerImpl();
       virtual ~IosPrinterManagerImpl();
 
-      virtual void setupPrinter() override;
+      virtual void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data) override;
       virtual void print(const QString& a_PathToImg) const override;
 
     private:
       UIPrinter* m_Printer;
-      QWidget* m_Dialog;
   };
 
 }

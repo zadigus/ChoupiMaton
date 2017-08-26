@@ -2,7 +2,8 @@
 
 #include "Logger/Logger.hpp"
 
-#include "PrinterSetup/PrinterSetup.hpp"
+#include "PrinterSetup/IosPrinterSetup.hpp"
+#include "PrinterSetup/IosPrinterData.hpp"
 
 #include <QApplication>
 #include <QQmlApplicationEngine>
@@ -10,7 +11,8 @@
 //-----------------------------------------------------
 void registerMetaTypes()
 {
-  qmlRegisterType<N_PrinterSetup::PrinterSetup>("PrinterSetup", 1, 0, "PrinterSetup");
+  qmlRegisterType<N_IosPrinterSetup::PrinterSetup>("IosPrinterSetup", 1, 0, "IosPrinterSetup");
+  qRegisterMetaType<N_IosPrinterSetup::PrinterData>();
 }
 
 //-----------------------------------------------------

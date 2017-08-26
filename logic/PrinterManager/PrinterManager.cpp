@@ -15,9 +15,9 @@ namespace N_PrinterManager {
   { }
 
   //-----------------------------------------------------
-  void PrinterManager::setupPrinter()
+  void PrinterManager::setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data)
   {
-    m_Impl->setupPrinter();
+    m_Impl->setPrinterData(a_Data);
   }
 
   //-----------------------------------------------------

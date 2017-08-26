@@ -18,8 +18,8 @@ SOURCES += main.cpp \
     $${PICSPROC_FOLDER}/PictureLayoutManager.cpp \
     $${CORE_FOLDER}/Utils.cpp \
     $${CORE_FOLDER}/Logger/Logger.cpp \
-    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp #\
-#    $${PRINTERSETUP_FOLDER}/PrinterSetupPlugin.cpp
+    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp \
+    $${PRINTERSETUP_FOLDER}/IosPrinterSetup.cpp
 
 HEADERS += EngineConfigurator.hpp \
     AppConfiguration.hpp \
@@ -31,9 +31,7 @@ HEADERS += EngineConfigurator.hpp \
     $${CORE_FOLDER}/Logger/Logger.hpp \
     $${PRINTERMANAGER_FOLDER}/PrinterManager.hpp \
     $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
-    $${PRINTERSETUP_FOLDER}/PrinterSetup.hpp #\
-#    $${PRINTERSETUP_FOLDER}/PrinterSetupPlugin.hpp
-
+    $${PRINTERSETUP_FOLDER}/IosPrinterSetup.hpp
 
 RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \
@@ -46,8 +44,11 @@ ios {
     ios_icon.files = $$files($$PWD/icons/icon*.png)
     launch_image.files = $$files($$PWD/ios/LaunchScreen/softozor.*)
     QMAKE_BUNDLE_DATA += ios_icon launch_image
+    OBJECTIVE_HEADERS +=  $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.hpp \
+        $${PRINTERSETUP_FOLDER}/IosPrinterData.hpp \
+        $${PRINTERSETUP_FOLDER}/IosPrinterSetupImpl.hpp
     OBJECTIVE_SOURCES += $${PRINTERMANAGER_FOLDER}/PrinterManager.mm \
         $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.mm \
-        $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.hpp \
-        $${PRINTERSETUP_FOLDER}/PrinterSetup.mm
+        $${PRINTERSETUP_FOLDER}/IosPrinterData.mm \
+        $${PRINTERSETUP_FOLDER}/IosPrinterSetupImpl.mm
 }
