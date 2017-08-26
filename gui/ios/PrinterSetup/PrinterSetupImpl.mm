@@ -1,5 +1,5 @@
-#import "IosPrinterSetupImpl.hpp"
-#import "IosPrinterSetup.hpp"
+#import "PrinterSetupImpl.hpp"
+#import "PrinterSetup.hpp"
 
 #import <QQuickWindow>
 #import <QUrl>

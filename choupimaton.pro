@@ -8,7 +8,6 @@ QT += quick qml multimedia widgets
 PICSPROC_FOLDER = logic/PicturesProcessor
 PRINTERMANAGER_FOLDER = logic/PrinterManager
 CORE_FOLDER = core
-PRINTERSETUP_FOLDER = gui/PrinterSetup
 
 SOURCES += main.cpp \
     EngineConfigurator.cpp \
@@ -18,8 +17,7 @@ SOURCES += main.cpp \
     $${PICSPROC_FOLDER}/PictureLayoutManager.cpp \
     $${CORE_FOLDER}/Utils.cpp \
     $${CORE_FOLDER}/Logger/Logger.cpp \
-    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp \
-    $${PRINTERSETUP_FOLDER}/IosPrinterSetup.cpp
+    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp
 
 HEADERS += EngineConfigurator.hpp \
     AppConfiguration.hpp \
@@ -30,25 +28,33 @@ HEADERS += EngineConfigurator.hpp \
     $${CORE_FOLDER}/Global.hpp \
     $${CORE_FOLDER}/Logger/Logger.hpp \
     $${PRINTERMANAGER_FOLDER}/PrinterManager.hpp \
-    $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
-    $${PRINTERSETUP_FOLDER}/IosPrinterSetup.hpp
+    $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp
 
 RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \
  gui/fonts/fonts.qrc
 
-INCLUDEPATH += gui logic core
+INCLUDEPATH += gui logic core gui/ios logic/ios
 
 ios {
+    IOS_PRINTERSETUP_FOLDER = gui/ios/PrinterSetup
+    IOS_PRINTERMANAGER_FOLDER = logic/ios/PrinterManager
+
     QMAKE_INFO_PLIST = ios/Info.plist
     ios_icon.files = $$files($$PWD/icons/icon*.png)
     launch_image.files = $$files($$PWD/ios/LaunchScreen/softozor.*)
     QMAKE_BUNDLE_DATA += ios_icon launch_image
-    OBJECTIVE_HEADERS +=  $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.hpp \
-        $${PRINTERSETUP_FOLDER}/IosPrinterData.hpp \
-        $${PRINTERSETUP_FOLDER}/IosPrinterSetupImpl.hpp
-    OBJECTIVE_SOURCES += $${PRINTERMANAGER_FOLDER}/PrinterManager.mm \
-        $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.mm \
-        $${PRINTERSETUP_FOLDER}/IosPrinterData.mm \
-        $${PRINTERSETUP_FOLDER}/IosPrinterSetupImpl.mm
+
+    HEADERS += $${IOS_PRINTERSETUP_FOLDER}/PrinterSetup.hpp
+
+    SOURCES += $${IOS_PRINTERSETUP_FOLDER}/PrinterSetup.cpp
+
+    OBJECTIVE_HEADERS +=  $${IOS_PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterData.hpp \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.hpp
+
+    OBJECTIVE_SOURCES += $${IOS_PRINTERMANAGER_FOLDER}/PrinterManager.mm \
+        $${IOS_PRINTERMANAGER_FOLDER}/PrinterManagerImpl.mm \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterData.mm \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.mm
 }

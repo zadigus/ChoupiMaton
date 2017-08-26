@@ -1,6 +1,6 @@
-#include "IosPrinterSetup.hpp"
+#include "PrinterSetup.hpp"
 
-#include "IosPrinterSetupImpl.hpp"
+#include "PrinterSetupImpl.hpp"
 
 #include <QQuickWindow>
 #include <QUrl>

@@ -6,7 +6,7 @@
 #include <QObject>
 
 namespace N_PrinterManager {
-  class PrinterManagerImpl;
+  class AbstractPrinterManagerImpl;
 }
 
 namespace N_IosPrinterSetup {
@@ -27,10 +27,10 @@ namespace N_PrinterManager {
       Q_INVOKABLE void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data);
 
     private:
-      Q_DISABLE_COPY(PrinterManager)
+      Q_DISABLE_COPY(PrinterManager);
 
     private:
-      std::unique_ptr<PrinterManagerImpl> m_Impl;
+      std::unique_ptr<AbstractPrinterManagerImpl> m_Impl;
 
   };
 

@@ -2,8 +2,8 @@
 
 #include "Logger/Logger.hpp"
 
-#include "PrinterSetup/IosPrinterSetup.hpp"
-#include "PrinterSetup/IosPrinterData.hpp"
+#include "PrinterSetup/PrinterSetup.hpp"
+#include "PrinterSetup/PrinterData.hpp"
 
 #include <QApplication>
 #include <QQmlApplicationEngine>

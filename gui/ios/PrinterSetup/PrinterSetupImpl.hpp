@@ -3,7 +3,7 @@
 
 #include "Global.hpp"
 
-#include "IosPrinterData.hpp"
+#include "PrinterData.hpp"
 
 #include <QWidget>
 

@@ -3,7 +3,7 @@
 
 #include "Global.hpp"
 
-#include "PrinterSetup/IosPrinterData.hpp"
+#include "PrinterSetup/PrinterData.hpp"
 
 #include <QQuickItem>
 

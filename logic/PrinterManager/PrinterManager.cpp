@@ -1,5 +1,5 @@
 #include "PrinterManager.hpp"
-#include "PrinterManagerImpl.hpp"
+#include "PrinterManager/PrinterManagerImpl.hpp"
 
 namespace N_PrinterManager {
 

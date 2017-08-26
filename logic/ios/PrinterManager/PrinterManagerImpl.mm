@@ -1,36 +1,36 @@
-#import "IosPrinterManagerImpl.hpp"
+#import "PrinterManagerImpl.hpp"
 
-#import "PrinterSetup/IosPrinterData.hpp"
+#import "PrinterSetup/PrinterData.hpp"
 
 #import <QUrl>
 
 #import <UIKit/UIPrintInteractionController.h>
 #import <UIKit/UIPrintInfo.h>
 
-namespace N_PrinterManager {
+namespace N_IosPrinterManager {
 
   //-----------------------------------------------------
-  IosPrinterManagerImpl::IosPrinterManagerImpl()
-    : PrinterManagerImpl()
+  PrinterManagerImpl::PrinterManagerImpl()
+    : N_PrinterManager::AbstractPrinterManagerImpl()
     , m_Printer(Q_NULLPTR)
   { }
 
   //-----------------------------------------------------
-  IosPrinterManagerImpl::~IosPrinterManagerImpl()
+  PrinterManagerImpl::~PrinterManagerImpl()
   { }
 
   //-----------------------------------------------------
-  void IosPrinterManagerImpl::setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data)
+  void PrinterManagerImpl::setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data)
   {
     m_Printer = a_Data.getPrinter();
-    qInfo() << "IosPrinterManagerImpl:";
+    qInfo() << "PrinterManagerImpl:";
     qInfo() << "printer name     = " << QString::fromNSString([m_Printer displayName]);
     qInfo() << "printer location = " << QString::fromNSString([m_Printer displayLocation]);
     qInfo() << "printer url      = " << QUrl::fromNSURL([m_Printer URL]);
   }
 
   //-----------------------------------------------------
-  void IosPrinterManagerImpl::print(const QString& a_PathToImg) const
+  void PrinterManagerImpl::print(const QString& a_PathToImg) const
   {
     auto printInfo([UIPrintInfo printInfo]);
     printInfo.jobName = @"Test";

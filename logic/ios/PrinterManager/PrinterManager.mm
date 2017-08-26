@@ -1,13 +1,13 @@
-#import "PrinterManager.hpp"
+#import "PrinterManager/PrinterManager.hpp"
 
-#import "IosPrinterManagerImpl.hpp"
+#import "PrinterManagerImpl.hpp"
 
 namespace N_PrinterManager {
 
   //-----------------------------------------------------
   PrinterManager::PrinterManager(QObject* a_Parent)
     : QObject(a_Parent)
-    , m_Impl(new IosPrinterManagerImpl())
+    , m_Impl(new N_IosPrinterManager::PrinterManagerImpl())
   { }
 
 }

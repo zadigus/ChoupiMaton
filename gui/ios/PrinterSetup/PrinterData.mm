@@ -1,4 +1,4 @@
-#import "IosPrinterData.hpp"
+#import "PrinterData.hpp"
 
 #import <UIKit/UIPrintInfo.h>
 #import <UIKit/UIPrinter.h>
