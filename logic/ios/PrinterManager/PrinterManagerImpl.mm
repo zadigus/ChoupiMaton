@@ -1,11 +1,15 @@
 #import "PrinterManagerImpl.hpp"
 
 #import "PrinterSetup/PrinterData.hpp"
+#import <PrinterManager/PictureRenderer.hpp>
 
 #import <QUrl>
 
 #import <UIKit/UIPrintInteractionController.h>
 #import <UIKit/UIPrintInfo.h>
+#import <UIKit/UIPrinter.h>
+
+#import <UIKit/UIImage.h>
 
 namespace N_IosPrinterManager {
 
@@ -13,6 +17,8 @@ namespace N_IosPrinterManager {
   PrinterManagerImpl::PrinterManagerImpl()
     : N_PrinterManager::AbstractPrinterManagerImpl()
     , m_Printer(Q_NULLPTR)
+    , m_PrintInfo(Q_NULLPTR)
+    , m_Renderer([[PictureRenderer alloc] init])
   { }
 
   //-----------------------------------------------------
@@ -23,18 +29,22 @@ namespace N_IosPrinterManager {
   void PrinterManagerImpl::setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data)
   {
     m_Printer = a_Data.getPrinter();
-    qInfo() << "PrinterManagerImpl:";
-    qInfo() << "printer name     = " << QString::fromNSString([m_Printer displayName]);
-    qInfo() << "printer location = " << QString::fromNSString([m_Printer displayLocation]);
-    qInfo() << "printer url      = " << QUrl::fromNSURL([m_Printer URL]);
   }
 
   //-----------------------------------------------------
-  void PrinterManagerImpl::print(const QString& a_PathToImg) const
+  void PrinterManagerImpl::setPrintInfo()
   {
-    auto printInfo([UIPrintInfo printInfo]);
-    printInfo.jobName = @"Test";
-    printInfo.outputType = UIPrintInfoOutputPhoto;
+    m_PrintInfo = [UIPrintInfo printInfo]; // if you don't do that here, the app will crash!
+    m_PrintInfo.jobName = @"Test";
+    m_PrintInfo.outputType = UIPrintInfoOutputPhoto;
+//    m_PrintInfo.orientation = UIPrintInfoOrientationPortrait;
+//    m_PrintInfo.duplex = UIPrintInfoDuplexNone;
+  }
+
+  //-----------------------------------------------------
+  void PrinterManagerImpl::print(const QString& a_PathToImg)
+  {
+    setPrintInfo();
 
     auto imgUrl([NSURL fileURLWithPath:a_PathToImg.toNSString()]);
     auto canPrint([UIPrintInteractionController canPrintURL: imgUrl]);
@@ -42,15 +52,19 @@ namespace N_IosPrinterManager {
     auto controller = [UIPrintInteractionController sharedPrintController];
     if(controller && canPrint)
     {
-      controller.printInfo = printInfo;
-      controller.printingItem = imgUrl;
+      controller.printInfo = m_PrintInfo;
+      [m_Renderer setImgPath: a_PathToImg.toNSString()];
+      controller.printPageRenderer = m_Renderer;
+
+//      controller.printingItem = imgUrl; // TODO: this must come in the renderer!
+
       qInfo() << "Printing image located at <" << QUrl::fromNSURL(imgUrl) << ">";
       [controller printToPrinter: m_Printer
                   completionHandler: ^(UIPrintInteractionController* /*printCtrl*/, BOOL completed, NSError* err)
       {
         if(completed && !err)
         {
-          qInfo() << "Print successful";
+          qInfo() << "Print successful"; // TODO: is that printed when the printer has printed?
         }
       }];
     }

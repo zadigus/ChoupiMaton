@@ -69,6 +69,8 @@ Rectangle {
       width: 150
       height: 50
 
+      visible: printerMgr.isPrinterSet()
+
       border { color: "black"; width: 3 }
 
       Text {
@@ -81,16 +83,5 @@ Rectangle {
         onClicked: handle("takePics")
       }
     }
-
-    IosPrinterSetup {
-      id: printerSetup
-      x: 500
-      y: 500
-      onPrinterDataChanged: {
-        console.log("printer data changed")
-        printerMgr.setPrinterData(printerSetup.printerData)
-      }
-    }
-
   }
 }

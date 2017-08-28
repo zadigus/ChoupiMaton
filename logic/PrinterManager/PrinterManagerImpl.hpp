@@ -18,7 +18,7 @@ namespace N_PrinterManager {
       virtual ~AbstractPrinterManagerImpl();
 
       virtual void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data) = 0;
-      virtual void print(const QString& a_PathToImg) const = 0;
+      virtual void print(const QString& a_PathToImg) = 0;
 
     private:
       Q_DISABLE_COPY(AbstractPrinterManagerImpl);

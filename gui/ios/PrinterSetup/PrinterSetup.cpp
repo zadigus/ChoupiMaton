@@ -13,6 +13,9 @@ namespace N_IosPrinterSetup {
     , m_Impl(new PrinterSetupImpl(this))
   {
     connect(this, &PrinterSetup::windowChanged, this, &PrinterSetup::onWindowChanged);
+    connect(this, &PrinterSetup::visibleChanged, this, [this]() { m_Impl->show(isVisible()); });
+    connect(this, &PrinterSetup::xChanged, this, [this]() { m_Impl->setX(x()); });
+    connect(this, &PrinterSetup::yChanged, this, [this]() { m_Impl->setY(y()); });
   }
 
   //----------------------------------------------------------------------------------------------
@@ -24,7 +27,7 @@ namespace N_IosPrinterSetup {
   {
     if(a_Window != Q_NULLPTR)
     {
-      m_Impl->onWindowChanged(a_Window->winId(), x(), y());
+      m_Impl->onWindowChanged(a_Window->winId());
     }
   }
 
@@ -33,5 +36,11 @@ namespace N_IosPrinterSetup {
   {
     m_Data = a_Data;
     emit printerDataChanged();
+  }
+
+  //----------------------------------------------------------------------------------------------
+  QString PrinterSetup::printerName() const
+  {
+    return m_Impl->getPrinterName();
   }
 }

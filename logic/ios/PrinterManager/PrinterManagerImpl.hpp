@@ -3,7 +3,9 @@
 
 #import "PrinterManager/PrinterManagerImpl.hpp"
 
-#import <UIKit/UIPrinter.h>
+Q_FORWARD_DECLARE_OBJC_CLASS(UIPrinter);
+Q_FORWARD_DECLARE_OBJC_CLASS(UIPrintInfo);
+Q_FORWARD_DECLARE_OBJC_CLASS(PictureRenderer);
 
 namespace N_IosPrinterManager {
 
@@ -15,10 +17,15 @@ namespace N_IosPrinterManager {
       virtual ~PrinterManagerImpl();
 
       virtual void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data) override;
-      virtual void print(const QString& a_PathToImg) const override;
+      virtual void print(const QString& a_PathToImg) override;
+
+    private:
+      void setPrintInfo();
 
     private:
       UIPrinter* m_Printer;
+      UIPrintInfo* m_PrintInfo;
+      PictureRenderer* m_Renderer;
   };
 
 }

@@ -18,6 +18,7 @@ namespace N_IosPrinterSetup {
     Q_OBJECT
 
     Q_PROPERTY(N_IosPrinterSetup::PrinterData printerData READ printerData WRITE setPrinterData NOTIFY printerDataChanged)
+    Q_PROPERTY(QString printerName READ printerName NOTIFY printerDataChanged)
 
     public:
       PrinterSetup(QQuickItem* a_Parent = Q_NULLPTR);
@@ -25,6 +26,8 @@ namespace N_IosPrinterSetup {
 
       void setPrinterData(const PrinterData& a_Data);
       PrinterData printerData() const;
+
+      QString printerName() const;
 
     private slots:
       void onWindowChanged(QQuickWindow* a_Window);
