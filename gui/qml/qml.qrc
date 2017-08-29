@@ -14,5 +14,6 @@
 	<file>Camera/ResolutionListPopup.qml</file>
 	<file>Camera/Popup.qml</file>
 	<file>Printer/PrinterConfiguration.qml</file>
+	<file>Camera/WatchArrow.qml</file>
     </qresource>
 </RCC>

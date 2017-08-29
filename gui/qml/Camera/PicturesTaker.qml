@@ -100,6 +100,10 @@ Rectangle {
     visible: camera.imageCapture.ready
   }
 
+  WatchArrow {
+    anchors.fill: parent
+  }
+
   CameraNotAvailable {
     anchors.fill: parent
     visible: !camera.imageCapture.ready
