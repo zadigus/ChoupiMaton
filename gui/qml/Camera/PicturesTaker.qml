@@ -74,8 +74,7 @@ Rectangle {
         // if we do it right after the last capture,
         // the last preview takes about 6 seconds to appear...
         picsProcessor.save()
-        printerMgr.print(picsProcessor.pathToPicture)
-        --currentNbOfCaptures
+        handle("end")
       }
     }
   }
@@ -101,6 +100,7 @@ Rectangle {
   }
 
   WatchArrow {
+    id: arrow
     anchors.fill: parent
   }
 
@@ -126,11 +126,6 @@ Rectangle {
       ImagePreview {
         height: mainWindow.height / 6
         width: height / Math.sqrt(2)
-
-        MouseArea {
-          anchors.fill: parent
-          onClicked: handle("start")
-        }
       }
 
       Component.onCompleted: {

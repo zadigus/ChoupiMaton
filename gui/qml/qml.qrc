@@ -4,6 +4,7 @@
         <file>main.qml</file>
 	<file>BurgerMenu.qml</file>
         <file>Start.qml</file>
+	<file>End.qml</file>
         <file>Camera/ImagePreview.qml</file>
         <file>Camera/CameraNotAvailable.qml</file>
 	<file>Camera/CameraConfiguration.qml</file>
