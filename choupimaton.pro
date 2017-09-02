@@ -34,14 +34,29 @@ RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \
  gui/fonts/fonts.qrc
 
-INCLUDEPATH += gui logic core
+INCLUDEPATH += gui logic core gui/ios logic/ios
 
 ios {
+    IOS_PRINTERSETUP_FOLDER = gui/ios/PrinterSetup
+    IOS_PRINTERMANAGER_FOLDER = logic/ios/PrinterManager
+
     QMAKE_INFO_PLIST = ios/Info.plist
     ios_icon.files = $$files($$PWD/icons/icon*.png)
     launch_image.files = $$files($$PWD/ios/LaunchScreen/softozor.*)
     QMAKE_BUNDLE_DATA += ios_icon launch_image
-    OBJECTIVE_SOURCES += $${PRINTERMANAGER_FOLDER}/PrinterManager.mm \
-        $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.mm \
-        $${PRINTERMANAGER_FOLDER}/IosPrinterManagerImpl.hpp
+
+    HEADERS += $${IOS_PRINTERSETUP_FOLDER}/PrinterSetup.hpp
+
+    SOURCES += $${IOS_PRINTERSETUP_FOLDER}/PrinterSetup.cpp
+
+    OBJECTIVE_HEADERS +=  $${IOS_PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
+        $${IOS_PRINTERMANAGER_FOLDER}/PictureRenderer.hpp \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterData.hpp \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.hpp
+
+    OBJECTIVE_SOURCES += $${IOS_PRINTERMANAGER_FOLDER}/PrinterManager.mm \
+        $${IOS_PRINTERMANAGER_FOLDER}/PictureRenderer.mm \
+        $${IOS_PRINTERMANAGER_FOLDER}/PrinterManagerImpl.mm \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterData.mm \
+        $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.mm
 }

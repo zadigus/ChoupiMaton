@@ -1,5 +1,5 @@
 #include "PrinterManager.hpp"
-#include "PrinterManagerImpl.hpp"
+#include "PrinterManager/PrinterManagerImpl.hpp"
 
 namespace N_PrinterManager {
 
@@ -7,6 +7,7 @@ namespace N_PrinterManager {
   //-----------------------------------------------------
   PrinterManager::PrinterManager(QObject* a_Parent)
     : QObject(a_Parent)
+    , m_IsPrinterSet(false)
   { }
 #endif
 
@@ -15,9 +16,10 @@ namespace N_PrinterManager {
   { }
 
   //-----------------------------------------------------
-  void PrinterManager::setupPrinter()
+  void PrinterManager::setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data)
   {
-    m_Impl->setupPrinter();
+    m_Impl->setPrinterData(a_Data);
+    m_IsPrinterSet = true;
   }
 
   //-----------------------------------------------------

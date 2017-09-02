@@ -1,32 +1,36 @@
-#ifndef PRINTERMANAGER_PRINTERMANAGERIMPL_HPP
-#define PRINTERMANAGER_PRINTERMANAGERIMPL_HPP
+#ifndef PRINTERMANAGER_ABSTRACTPRINTERMANAGERIMPL_HPP
+#define PRINTERMANAGER_ABSTRACTPRINTERMANAGERIMPL_HPP
 
 #include "Global.hpp"
 
 class QString;
 
+namespace N_IosPrinterSetup {
+  class PrinterData;
+}
+
 namespace N_PrinterManager {
 
-  class PrinterManagerImpl
+  class AbstractPrinterManagerImpl
   {
     public:
-      PrinterManagerImpl();
-      virtual ~PrinterManagerImpl();
+      AbstractPrinterManagerImpl();
+      virtual ~AbstractPrinterManagerImpl();
 
-      virtual void setupPrinter() = 0;
-      virtual void print(const QString& a_PathToImg) const = 0;
+      virtual void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data) = 0;
+      virtual void print(const QString& a_PathToImg) = 0;
 
     private:
-      Q_DISABLE_COPY(PrinterManagerImpl)
+      Q_DISABLE_COPY(AbstractPrinterManagerImpl);
   };
 
   //==============================
   // inline methods implementation
   //==============================
-  inline PrinterManagerImpl::PrinterManagerImpl()
+  inline AbstractPrinterManagerImpl::AbstractPrinterManagerImpl()
   { }
 
-  inline PrinterManagerImpl::~PrinterManagerImpl()
+  inline AbstractPrinterManagerImpl::~AbstractPrinterManagerImpl()
   { }
 
 }

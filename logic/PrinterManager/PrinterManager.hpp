@@ -6,7 +6,11 @@
 #include <QObject>
 
 namespace N_PrinterManager {
-  class PrinterManagerImpl;
+  class AbstractPrinterManagerImpl;
+}
+
+namespace N_IosPrinterSetup {
+  class PrinterData;
 }
 
 namespace N_PrinterManager {
@@ -19,16 +23,26 @@ namespace N_PrinterManager {
       PrinterManager(QObject* a_Parent = Q_NULLPTR);
       virtual ~PrinterManager();
 
-      Q_INVOKABLE void setupPrinter();
       Q_INVOKABLE void print(const QString& a_PathToImg) const;
+      Q_INVOKABLE void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data);
+      Q_INVOKABLE bool isPrinterSet() const;
 
     private:
-      Q_DISABLE_COPY(PrinterManager)
+      Q_DISABLE_COPY(PrinterManager);
 
     private:
-      std::unique_ptr<PrinterManagerImpl> m_Impl;
+      std::unique_ptr<AbstractPrinterManagerImpl> m_Impl;
+      bool m_IsPrinterSet;
 
   };
+
+  //==============================
+  // inline methods implementation
+  //==============================
+  inline bool PrinterManager::isPrinterSet() const
+  {
+    return m_IsPrinterSet;
+  }
 
 }
 

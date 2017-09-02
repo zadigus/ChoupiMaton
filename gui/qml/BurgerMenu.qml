@@ -18,13 +18,13 @@ Button {
     y: burgerMenu.height
 
     MenuItem {
-      text: qsTr("Configure...")
-      onTriggered: handle("config")
+      text: qsTr("Camera...")
+      onTriggered: handle("cameraConfig")
     }
 
     MenuItem {
-      text: qsTr("Configure printer...")
-      onTriggered: printerMgr.setupPrinter()
+      text: qsTr("Printer...")
+      onTriggered: handle("printerConfig")
     }
 
     MenuItem {

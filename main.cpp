@@ -2,13 +2,17 @@
 
 #include "Logger/Logger.hpp"
 
+#include "PrinterSetup/PrinterSetup.hpp"
+#include "PrinterSetup/PrinterData.hpp"
+
 #include <QApplication>
 #include <QQmlApplicationEngine>
 
 //-----------------------------------------------------
 void registerMetaTypes()
 {
-//  qmlRegisterType<MyType>("MyUrl", 1, 0, "qmlName");
+  qmlRegisterType<N_IosPrinterSetup::PrinterSetup>("IosPrinterSetup", 1, 0, "IosPrinterSetup");
+  qRegisterMetaType<N_IosPrinterSetup::PrinterData>();
 }
 
 //-----------------------------------------------------
