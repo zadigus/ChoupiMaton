@@ -48,7 +48,7 @@ Rectangle {
   Rectangle {
     id: sideBar
 
-    color: "black"
+    color: camera.imageCapture.ready ? "black" : "transparent"
 
     width: cameraUI.width / 4
     height: cameraUI.height

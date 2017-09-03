@@ -24,7 +24,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     </variation>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="softozor.png" translatesAutoresizingMaskIntoConstraints="NO" id="63f-n8-Zln">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="softozor.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="63f-n8-Zln">
                     <rect key="frame" x="0.0" y="9" width="1024" height="1357"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
@@ -44,6 +44,6 @@
         </view>
     </objects>
     <resources>
-        <image name="softozor.png" width="1216" height="1331"/>
+        <image name="softozor.jpg" width="2762" height="3311"/>
     </resources>
 </document>

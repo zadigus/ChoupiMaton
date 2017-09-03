@@ -11,6 +11,13 @@ Rectangle {
 
   anchors.fill: parent
 
+  Image {
+    id: printerNotAvailableImg
+    anchors.fill: parent
+    source: "qrc:/images/PrinterNotAvailable"
+    visible: !printerMgr.isPrinterSet()
+  }
+
   IosPrinterSetup {
     id: printerSetup
     x: mainUI.width * 0.5
@@ -18,13 +25,15 @@ Rectangle {
     visible: false
     onPrinterDataChanged: {
       printerMgr.setPrinterData(printerSetup.printerData)
+      printerNotAvailableImg.visible = false
+      mainUI.color = "black"
     }
   }
 
   Rectangle {
     id: sideBar
 
-    color: "black"
+    color: "transparent"
 
     width: mainUI.width / 4
     height: mainUI.height

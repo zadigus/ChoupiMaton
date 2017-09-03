@@ -6,6 +6,7 @@
 	<file alias="RandomPreview2">RandomPreviews/random_2.png</file>
 	<file alias="RandomPreview3">RandomPreviews/random_3.png</file>
 	<file alias="RandomPreview4">RandomPreviews/random_4.png</file>
-	<file alias="CameraNotAvailable">camera_not_available.png</file>
+	<file alias="CameraNotAvailable">camera_not_available.jpg</file>
+	<file alias="PrinterNotAvailable">printer_not_available.jpg</file>
     </qresource>
 </RCC>
