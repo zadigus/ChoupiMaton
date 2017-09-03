@@ -99,11 +99,6 @@ Rectangle {
     visible: camera.imageCapture.ready
   }
 
-  WatchArrow {
-    id: arrow
-    anchors.fill: parent
-  }
-
   CameraNotAvailable {
     anchors.fill: parent
     visible: !camera.imageCapture.ready
@@ -114,8 +109,8 @@ Rectangle {
 
     anchors {
       horizontalCenter: cameraUI.horizontalCenter
-      bottom: cameraUI.bottom
-      bottomMargin: 50
+      top: cameraUI.top
+      topMargin: 50
     }
 
     spacing: 25

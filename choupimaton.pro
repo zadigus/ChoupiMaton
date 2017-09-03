@@ -54,8 +54,7 @@ ios {
         $${IOS_PRINTERSETUP_FOLDER}/PrinterData.hpp \
         $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.hpp
 
-    OBJECTIVE_SOURCES += $${IOS_PRINTERMANAGER_FOLDER}/PrinterManager.mm \
-        $${IOS_PRINTERMANAGER_FOLDER}/PictureRenderer.mm \
+    OBJECTIVE_SOURCES += $${IOS_PRINTERMANAGER_FOLDER}/PictureRenderer.mm \
         $${IOS_PRINTERMANAGER_FOLDER}/PrinterManagerImpl.mm \
         $${IOS_PRINTERSETUP_FOLDER}/PrinterData.mm \
         $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.mm

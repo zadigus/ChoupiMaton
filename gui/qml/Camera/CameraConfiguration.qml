@@ -3,6 +3,8 @@ import QtMultimedia 5.8
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
+import "../common" as Common
+
 Rectangle {
   id : cameraUI
 
@@ -60,7 +62,7 @@ Rectangle {
 
       anchors.fill: parent
 
-      ParamIndicator {
+      Common.ParamIndicator {
         id: colorTempInd
 
         Layout.fillWidth: true
@@ -88,7 +90,7 @@ Rectangle {
         }
       }
 
-      ParamIndicator { // TODO: replace this with a slider
+      Common.ParamIndicator {
         id: zoomInd
 
         Layout.fillWidth: true

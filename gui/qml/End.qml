@@ -26,7 +26,7 @@ Rectangle {
   Timer {
     id: timer
 
-    interval: appConfig.printTime
+    interval: printerMgr.printDuration
     running: true
     repeat: false
 
@@ -69,5 +69,5 @@ Rectangle {
     }
   }
 
-//  Component.onCompleted: printerMgr.print(picsProcessor.pathToPicture)
+  Component.onCompleted: printerMgr.print(picsProcessor.pathToPicture)
 }

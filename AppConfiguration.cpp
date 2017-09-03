@@ -1,7 +1,6 @@
 #include "AppConfiguration.hpp"
 
 #include <QApplication>
-#include <QSettings>
 #include <QDir>
 #include <QStandardPaths>
 
@@ -141,22 +140,4 @@ void AppConfiguration::setRotationAngle(qreal a_Value)
   m_Settings.setValue("rotationAngle", a_Value);
   m_Settings.endGroup();
   emit rotationAngleChanged();
-}
-
-//----------------------------------------------------------------------------------------------
-int AppConfiguration::printTime() const
-{
-  m_Settings.beginGroup("Printer");
-  auto result(m_Settings.value("printTime", 60000).toInt());
-  m_Settings.endGroup();
-  return result;
-}
-
-//----------------------------------------------------------------------------------------------
-void AppConfiguration::setPrintTime(int a_Value)
-{
-  m_Settings.beginGroup("Printer");
-  m_Settings.setValue("printTime", a_Value);
-  m_Settings.endGroup();
-  emit printTimeChanged();
 }

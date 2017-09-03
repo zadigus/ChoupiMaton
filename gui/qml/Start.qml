@@ -1,5 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.2
+import QtQuick.Dialogs 1.2
 
 import IosPrinterSetup 1.0
 
@@ -29,6 +31,46 @@ Rectangle {
     width: 32
     height: 32
     onHandle: startUI.handle(name)
+  }
+
+  Dialog {
+    id: needPaperDlg
+    visible: printerMgr.needPaper
+    contentItem: Rectangle {
+      implicitHeight: 100
+      implicitWidth: 400
+      Text {
+        anchors.centerIn: parent
+        text: "Merci d'ajouter du papier !"
+      }
+      MouseArea {
+        anchors.fill: parent
+        onClicked: {
+          needPaperDlg.accepted()
+        }
+      }
+    }
+    onAccepted: printerMgr.needPaper = false
+  }
+
+  Dialog {
+    id: needInkDlg
+    visible: printerMgr.needInk
+    contentItem: Rectangle {
+      implicitHeight: 100
+      implicitWidth: 400
+      Text {
+        anchors.centerIn: parent
+        text: "Merci d'ajouter de l'encre !"
+      }
+      MouseArea {
+        anchors.fill: parent
+        onClicked: {
+          needInkDlg.accepted()
+        }
+      }
+    }
+    onAccepted: printerMgr.needInk = false
   }
 
   ColumnLayout {
@@ -70,25 +112,33 @@ Nous allons procéder de la façon suivante:<br>
 <p>Faites bien attention de regarder vers la caméra si vous voulez par avoir l'air trop cons."
     }
 
-    Rectangle {
-      Layout.alignment: Qt.AlignHCenter
-
-      width: 150
-      height: 50
-
-      visible: printerMgr.isPrinterSet()
-
-      border { color: "black"; width: 3 }
-
-      Text {
-        anchors.centerIn: parent
-        text: "C'est partiiiii !"
-      }
-
-      MouseArea {
-        anchors.fill: parent
-        onClicked: handle("takePics")
+    FontMetrics {
+      id: fontMetrics
+      font {
+        family: explanatoryFont.name
+        pixelSize: 50
       }
     }
+
+    Button {
+      Layout.alignment: Qt.AlignHCenter
+
+      width: fontMetrics.boundingRect(text).width
+      height: fontMetrics.boundingRect(text).height
+
+      visible: printerMgr.printerSet
+
+      text: "Goooooo !"
+      font: fontMetrics.font
+      onClicked: handle("takePics")
+
+      Rectangle {
+        anchors.fill: parent
+        color: "transparent"
+        border.color: "black"
+        border.width: 3
+      }
+    }
+
   }
 }
