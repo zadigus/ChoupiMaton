@@ -1,6 +1,9 @@
 #include "PictureLayoutManager.hpp"
 
 #include <QPainter>
+#include <QFontDatabase>
+#include <QFontMetrics>
+#include <QDate>
 
 #include <cmath>
 
@@ -8,6 +11,22 @@ namespace N_PicturesProcessor {
 
   const int PictureLayoutManager::NB_COLS = 2;
   const int PictureLayoutManager::NB_ROWS = 2;
+
+  //-----------------------------------------------------
+  QString getBottomText()
+  {
+    QString result("ChoupiWedding, " + QDate::currentDate().toString("dd.MM.yy"));
+    return result;
+  }
+
+  //-----------------------------------------------------
+  QFont getBottomTextFont()
+  {
+    auto id(QFontDatabase::addApplicationFont(":/fonts/AlexBrush"));
+    QFont result(QFontDatabase::applicationFontFamilies(id).at(0));
+    result.setPixelSize(135);
+    return result;
+  }
 
   //-----------------------------------------------------
   PictureLayoutManager::PictureLayoutManager(QObject* a_Parent)
@@ -18,7 +37,41 @@ namespace N_PicturesProcessor {
     , m_SinglePictureWidth(0)
     , m_SinglePictureHeight(0)
     , m_CurrentPicture(0)
+    , m_BottomText(getBottomText())
+    , m_BottomTextFont(getBottomTextFont())
+    , m_BottomTextMargin(25)
   { }
+
+  //-----------------------------------------------------
+  int PictureLayoutManager::getBottomTextWidth() const
+  {
+    QFontMetrics metrics(m_BottomTextFont);
+    return metrics.tightBoundingRect(m_BottomText).width();
+  }
+
+  //-----------------------------------------------------
+  QPoint PictureLayoutManager::bottomTextPosition() const
+  {
+    QPoint result;
+    result.setX((size().width() - getBottomTextWidth()) / 2);
+    result.setY(m_SinglePictureHeight * NB_ROWS + m_BottomTextMargin);
+    return result;
+  }
+
+  //-----------------------------------------------------
+  QSize PictureLayoutManager::size() const
+  {
+    int bottomMargin(m_BottomMarginRatio * m_SinglePictureHeight);
+    return QSize(NB_COLS * m_SinglePictureWidth, NB_ROWS * m_SinglePictureHeight + bottomMargin);
+  }
+
+  //-----------------------------------------------------
+  void PictureLayoutManager::drawBottomText()
+  {
+    QPainter painter(&m_Output);
+    painter.setFont(m_BottomTextFont);
+    painter.drawText(bottomTextPosition(), m_BottomText);
+  }
 
   //-----------------------------------------------------
   void PictureLayoutManager::reset(int a_SinglePictureWidth, int a_SinglePictureHeight, qreal a_ScaleFactor, qreal a_RotationAngle, qreal a_BottomMarginRatio)
@@ -29,8 +82,9 @@ namespace N_PicturesProcessor {
     m_ScaleFactor = a_ScaleFactor;
     m_RotationAngle = a_RotationAngle;
     m_BottomMarginRatio = a_BottomMarginRatio;
-    int bottomMargin = m_BottomMarginRatio * m_SinglePictureHeight;
-    m_Output = QImage(NB_COLS * m_SinglePictureWidth, NB_ROWS * m_SinglePictureHeight + bottomMargin, QImage::Format_ARGB32_Premultiplied);
+    auto picSize(size());
+    m_Output = QImage(picSize.width(), picSize.height(), QImage::Format_ARGB32_Premultiplied);
+    drawBottomText();
   }
 
   //-----------------------------------------------------

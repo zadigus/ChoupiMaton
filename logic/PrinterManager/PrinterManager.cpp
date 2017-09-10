@@ -61,7 +61,7 @@ namespace N_PrinterManager {
   int PrinterManager::printDuration() const
   {
     m_Settings.beginGroup("Printer");
-    auto result(m_Settings.value("printDuration", 60000).toInt());
+    auto result(m_Settings.value("printDuration", 80000).toInt());
     m_Settings.endGroup();
     return result;
   }
