@@ -24,7 +24,12 @@ Rectangle {
     id: printerNotAvailableImg
     anchors.fill: parent
     source: "qrc:/images/PrinterNotAvailable"
-    visible: !printerMgr.printerSet
+
+    Binding {
+      target: printerNotAvailableImg
+      property: "visible"
+      value: !printerMgr.printerSet
+    }
   }
 
   Rectangle {
@@ -49,10 +54,7 @@ Rectangle {
     x: mainUI.width * 0.5
     y: printerNameBtn.y + printerNameBtn.height / 2
     visible: false
-    onPrinterDataChanged: {
-      printerMgr.setPrinterData(printerSetup.printerData)
-      printerNotAvailableImg.visible = false
-    }
+    onPrinterDataChanged: printerMgr.setPrinterData(printerSetup.printerData)
   }
 
   Rectangle {
@@ -73,11 +75,17 @@ Rectangle {
       Button {
         id: printerNameBtn
         Layout.alignment: Qt.AlignHCenter
-
+        visible: !disconnectPrinterBtn.visible
         text: printerSetup.printerName
-        onClicked: {
-          printerSetup.visible = !printerSetup.visible
-        }
+        onClicked: printerSetup.visible = !printerSetup.visible
+      }
+
+      Button {
+        id: disconnectPrinterBtn
+        Layout.alignment: Qt.AlignHCenter
+        visible: printerMgr.printerSet
+        text: qsTr("<center>Disconnect<br>" + printerSetup.printerName + "</center>")
+        onClicked: printerSetup.resetPrinter()
       }
 
       Common.ParamIndicator {

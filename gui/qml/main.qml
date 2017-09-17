@@ -9,7 +9,8 @@ Window {
 
   property var pages: {
     "start" : "qrc:/qml/Start.qml",
-    "end" : "qrc:/qml/End.qml",
+    "print" : "qrc:/qml/Print.qml",
+    "saveOnly" : "qrc:/qml/SaveOnly.qml",
     "takePics" : "qrc:/qml/Camera/PicturesTaker.qml",
     "cameraConfig" : "qrc:/qml/Camera/CameraConfiguration.qml",
     "printerConfig" : "qrc:/qml/Printer/PrinterConfiguration.qml"

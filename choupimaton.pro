@@ -8,6 +8,7 @@ QT += quick qml multimedia widgets
 PICSPROC_FOLDER = logic/PicturesProcessor
 PRINTERMANAGER_FOLDER = logic/PrinterManager
 CORE_FOLDER = core
+COMMON_FOLDER = common
 
 SOURCES += main.cpp \
     EngineConfigurator.cpp \
@@ -34,11 +35,12 @@ RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \
  gui/fonts/fonts.qrc
 
-INCLUDEPATH += gui logic core gui/ios logic/ios
+INCLUDEPATH += gui logic core gui/ios logic/ios common/ios
 
 ios {
     IOS_PRINTERSETUP_FOLDER = gui/ios/PrinterSetup
     IOS_PRINTERMANAGER_FOLDER = logic/ios/PrinterManager
+    IOS_COMMON_DATA_FOLDER = $${COMMON_FOLDER}/ios/Data
 
     QMAKE_INFO_PLIST = ios/Info.plist
     ios_icon.files = $$files($$PWD/icons/icon*.png)
@@ -51,11 +53,11 @@ ios {
 
     OBJECTIVE_HEADERS +=  $${IOS_PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
         $${IOS_PRINTERMANAGER_FOLDER}/PictureRenderer.hpp \
-        $${IOS_PRINTERSETUP_FOLDER}/PrinterData.hpp \
+        $${IOS_COMMON_DATA_FOLDER}/PrinterData.hpp \
         $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.hpp
 
     OBJECTIVE_SOURCES += $${IOS_PRINTERMANAGER_FOLDER}/PictureRenderer.mm \
         $${IOS_PRINTERMANAGER_FOLDER}/PrinterManagerImpl.mm \
-        $${IOS_PRINTERSETUP_FOLDER}/PrinterData.mm \
+        $${IOS_COMMON_DATA_FOLDER}/PrinterData.mm \
         $${IOS_PRINTERSETUP_FOLDER}/PrinterSetupImpl.mm
 }

@@ -3,12 +3,13 @@
 
 #include "Global.hpp"
 
-#include "PrinterData.hpp"
+#include "Data/PrinterData.hpp"
 
 #include <QWidget> // this is for the definition of type WId
 
 Q_FORWARD_DECLARE_OBJC_CLASS(UIPrinterPickerController);
 Q_FORWARD_DECLARE_OBJC_CLASS(UIView);
+Q_FORWARD_DECLARE_OBJC_CLASS(UIPrinter);
 
 namespace N_IosPrinterSetup {
   class PrinterSetup;
@@ -30,15 +31,19 @@ namespace N_IosPrinterSetup {
 
       QString getPrinterName() const;
 
+      void resetPrinter();
+
     private:
       void showPicker();
       void hidePicker();
+
+      void setPrinter(UIPrinter* a_Printer);
 
     private:
       PrinterSetup* m_Parent;
       UIPrinterPickerController* m_Picker;
       UIView* m_View;
-      PrinterData m_Data;
+      N_IosCommonData::PrinterData m_Data;
 
       qreal m_X;
       qreal m_Y;

@@ -1,5 +1,5 @@
-#ifndef IOSPRINTERSETUP_PRINTERDATA_HPP
-#define IOSPRINTERSETUP_PRINTERDATA_HPP
+#ifndef IOS_COMMON_PRINTERDATA_HPP
+#define IOS_COMMON_PRINTERDATA_HPP
 
 #include "Global.hpp"
 
@@ -7,7 +7,7 @@
 
 Q_FORWARD_DECLARE_OBJC_CLASS(UIPrinter);
 
-namespace N_IosPrinterSetup {
+namespace N_IosCommonData {
 
   class PrinterData
   {
@@ -19,9 +19,10 @@ namespace N_IosPrinterSetup {
       void setPrinter(UIPrinter* a_Printer);
       UIPrinter* getPrinter() const;
 
+      bool isPrinterSet() const;
+
     private:
       UIPrinter* m_Printer;
-//      UIPrintInfo* m_PrintInfo;
   };
 
   //==============================
@@ -33,8 +34,13 @@ namespace N_IosPrinterSetup {
       return m_Printer;
   }
 
+  inline bool PrinterData::isPrinterSet() const
+  {
+      return m_Printer != NULL;
+  }
+
 }
 
-Q_DECLARE_METATYPE(N_IosPrinterSetup::PrinterData)
+Q_DECLARE_METATYPE(N_IosCommonData::PrinterData)
 
 #endif

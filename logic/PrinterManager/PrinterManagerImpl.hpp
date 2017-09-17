@@ -5,7 +5,7 @@
 
 class QString;
 
-namespace N_IosPrinterSetup {
+namespace N_IosCommonData {
   class PrinterData;
 }
 
@@ -17,7 +17,7 @@ namespace N_PrinterManager {
       AbstractPrinterManagerImpl();
       virtual ~AbstractPrinterManagerImpl();
 
-      virtual void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data) = 0;
+      virtual void setPrinterData(const N_IosCommonData::PrinterData& a_Data) = 0;
       virtual void print(const QString& a_PathToImg) = 0;
 
     private:

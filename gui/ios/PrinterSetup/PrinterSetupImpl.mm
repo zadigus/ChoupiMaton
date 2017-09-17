@@ -41,6 +41,13 @@ namespace N_IosPrinterSetup {
   }
 
   //----------------------------------------------------------------------------------------------
+  void PrinterSetupImpl::setPrinter(UIPrinter* a_Printer)
+  {
+    m_Data.setPrinter(a_Printer);
+    m_Parent->setPrinterData(m_Data);
+  }
+
+  //----------------------------------------------------------------------------------------------
   void PrinterSetupImpl::showPicker()
   {
     if(m_View)
@@ -51,9 +58,7 @@ namespace N_IosPrinterSetup {
       {
         if(userDidSelect)
         {
-          auto printer = controller.selectedPrinter;
-          m_Data.setPrinter(printer);
-          m_Parent->setPrinterData(m_Data);
+          setPrinter(controller.selectedPrinter);
         }
       }];
     }
@@ -79,6 +84,12 @@ namespace N_IosPrinterSetup {
   {
     auto printerName(QString::fromNSString([m_Data.getPrinter() displayName]));
     return printerName.isEmpty() ? QObject::tr("No printer") : printerName;
+  }
+
+  //----------------------------------------------------------------------------------------------
+  void PrinterSetupImpl::resetPrinter()
+  {
+    setPrinter(NULL);
   }
 
 }

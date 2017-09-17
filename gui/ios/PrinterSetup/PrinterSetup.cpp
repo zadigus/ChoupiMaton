@@ -32,7 +32,7 @@ namespace N_IosPrinterSetup {
   }
 
   //----------------------------------------------------------------------------------------------
-  void PrinterSetup::setPrinterData(const PrinterData& a_Data)
+  void PrinterSetup::setPrinterData(const N_IosCommonData::PrinterData& a_Data)
   {
     m_Data = a_Data;
     emit printerDataChanged();
@@ -42,5 +42,11 @@ namespace N_IosPrinterSetup {
   QString PrinterSetup::printerName() const
   {
     return m_Impl->getPrinterName();
+  }
+
+  //----------------------------------------------------------------------------------------------
+  void PrinterSetup::resetPrinter()
+  {
+    return m_Impl->resetPrinter();
   }
 }

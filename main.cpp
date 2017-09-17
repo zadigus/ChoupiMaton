@@ -3,7 +3,7 @@
 #include "Logger/Logger.hpp"
 
 #include "PrinterSetup/PrinterSetup.hpp"
-#include "PrinterSetup/PrinterData.hpp"
+#include "Data/PrinterData.hpp"
 
 #include <QApplication>
 #include <QQmlApplicationEngine>
@@ -12,7 +12,7 @@
 void registerMetaTypes()
 {
   qmlRegisterType<N_IosPrinterSetup::PrinterSetup>("IosPrinterSetup", 1, 0, "IosPrinterSetup");
-  qRegisterMetaType<N_IosPrinterSetup::PrinterData>();
+  qRegisterMetaType<N_IosCommonData::PrinterData>();
 }
 
 //-----------------------------------------------------
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
   QQmlApplicationEngine engine;
   EngineConfigurator ec(engine);
 
-//  initLogs();
+  initLogs();
 
   ec.setupContext();
   ec.setupSettings();

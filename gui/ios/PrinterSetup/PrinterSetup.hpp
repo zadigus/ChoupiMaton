@@ -3,7 +3,7 @@
 
 #include "Global.hpp"
 
-#include "PrinterSetup/PrinterData.hpp"
+#include "Data/PrinterData.hpp"
 
 #include <QQuickItem>
 
@@ -17,15 +17,17 @@ namespace N_IosPrinterSetup {
   {
     Q_OBJECT
 
-    Q_PROPERTY(N_IosPrinterSetup::PrinterData printerData READ printerData WRITE setPrinterData NOTIFY printerDataChanged)
+    Q_PROPERTY(N_IosCommonData::PrinterData printerData READ printerData WRITE setPrinterData NOTIFY printerDataChanged)
     Q_PROPERTY(QString printerName READ printerName NOTIFY printerDataChanged)
 
     public:
       PrinterSetup(QQuickItem* a_Parent = Q_NULLPTR);
       virtual ~PrinterSetup();
 
-      void setPrinterData(const PrinterData& a_Data);
-      PrinterData printerData() const;
+      Q_INVOKABLE void resetPrinter();
+
+      void setPrinterData(const N_IosCommonData::PrinterData& a_Data);
+      N_IosCommonData::PrinterData printerData() const;
 
       QString printerName() const;
 
@@ -37,14 +39,14 @@ namespace N_IosPrinterSetup {
 
     private:
       std::unique_ptr<PrinterSetupImpl> m_Impl;
-      PrinterData m_Data;
+      N_IosCommonData::PrinterData m_Data;
   };
 
   //==============================
   // inline methods implementation
   //==============================
 
-  inline PrinterData PrinterSetup::printerData() const
+  inline N_IosCommonData::PrinterData PrinterSetup::printerData() const
   {
     return m_Data;
   }

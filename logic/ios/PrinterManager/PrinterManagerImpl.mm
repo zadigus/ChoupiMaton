@@ -1,6 +1,6 @@
 #import "PrinterManagerImpl.hpp"
 
-#import "PrinterSetup/PrinterData.hpp"
+#import "Data/PrinterData.hpp"
 #import <PrinterManager/PictureRenderer.hpp>
 
 #import <QUrl>
@@ -26,7 +26,7 @@ namespace N_IosPrinterManager {
   { }
 
   //-----------------------------------------------------
-  void PrinterManagerImpl::setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data)
+  void PrinterManagerImpl::setPrinterData(const N_IosCommonData::PrinterData& a_Data)
   {
     m_Printer = a_Data.getPrinter();
   }
@@ -37,6 +37,7 @@ namespace N_IosPrinterManager {
     m_PrintInfo = [UIPrintInfo printInfo]; // if you don't do that here, the app will crash!
     m_PrintInfo.jobName = @"Test";
     m_PrintInfo.outputType = UIPrintInfoOutputPhoto;
+    // The following two lines let the application crash for some unknown reason
 //    m_PrintInfo.orientation = UIPrintInfoOrientationPortrait;
 //    m_PrintInfo.duplex = UIPrintInfoDuplexNone;
   }
@@ -55,8 +56,6 @@ namespace N_IosPrinterManager {
       controller.printInfo = m_PrintInfo;
       [m_Renderer setImgPath: a_PathToImg.toNSString()];
       controller.printPageRenderer = m_Renderer;
-
-//      controller.printingItem = imgUrl; // TODO: this must come in the renderer!
 
       qInfo() << "Printing image located at <" << QUrl::fromNSURL(imgUrl) << ">";
       [controller printToPrinter: m_Printer

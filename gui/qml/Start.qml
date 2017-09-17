@@ -113,7 +113,7 @@ Nous allons procéder de la façon suivante:<br>
     }
 
     FontMetrics {
-      id: fontMetrics
+      id: buttonFontMetrics
       font {
         family: explanatoryFont.name
         pixelSize: 50
@@ -123,13 +123,11 @@ Nous allons procéder de la façon suivante:<br>
     Button {
       Layout.alignment: Qt.AlignHCenter
 
-      width: fontMetrics.boundingRect(text).width
-      height: fontMetrics.boundingRect(text).height
-
-      visible: printerMgr.printerSet
+      width: buttonFontMetrics.boundingRect(text).width
+      height: buttonFontMetrics.boundingRect(text).height
 
       text: "Goooooo !"
-      font: fontMetrics.font
+      font: buttonFontMetrics.font
       onClicked: handle("takePics")
 
       Rectangle {
@@ -137,6 +135,34 @@ Nous allons procéder de la façon suivante:<br>
         color: "transparent"
         border.color: "black"
         border.width: 3
+      }
+    }
+
+    Text {
+      Layout.alignment: Qt.AlignHCenter
+      visible: !printerMgr.printerSet
+      text: "No printer available!"
+      font {
+        pixelSize: 15
+        family: explanatoryFont.name
+      }
+      color: "black"
+
+      SequentialAnimation on color {
+        loops: Animation.Infinite
+        running: true
+
+        ColorAnimation {
+          from: "black"
+          to: "transparent"
+          duration: 1000
+        }
+
+        ColorAnimation {
+          from: "transparent"
+          to: "black"
+          duration: 1000
+        }
       }
     }
 

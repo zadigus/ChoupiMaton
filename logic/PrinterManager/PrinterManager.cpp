@@ -2,6 +2,7 @@
 #include "PrinterManager/PrinterManagerImpl.hpp"
 
 #include "ios/PrinterManager/PrinterManagerImpl.hpp"
+#include "Data/PrinterData.hpp"
 
 #include <QDir>
 #include <QStandardPaths>
@@ -32,17 +33,24 @@ namespace N_PrinterManager {
   { }
 
   //-----------------------------------------------------
-  void PrinterManager::setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data)
+  void PrinterManager::setPrinterData(const N_IosCommonData::PrinterData& a_Data)
   {
     m_Impl->setPrinterData(a_Data);
-    setPrinterSet(true);
-    setNeedInk(true);
-    setNeedPaper(true);
+    auto isPrinter(a_Data.isPrinterSet());
+    setPrinterSet(isPrinter);
+    setNeedInk(isPrinter);
+    setNeedPaper(isPrinter);
   }
 
   //-----------------------------------------------------
   void PrinterManager::print(const QString& a_PathToImg)
   {
+    if(!m_IsPrinterSet)
+    {
+      qWarning() << "No printer set --> we don't print anything.";
+      return;
+    }
+
     m_Impl->print(a_PathToImg);
     ++m_NbPrints;
     if(m_NbPrints % paperFrequency() == 0)

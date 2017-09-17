@@ -10,7 +10,7 @@ namespace N_PrinterManager {
   class AbstractPrinterManagerImpl;
 }
 
-namespace N_IosPrinterSetup {
+namespace N_IosCommonData {
   class PrinterData;
 }
 
@@ -32,7 +32,7 @@ namespace N_PrinterManager {
       virtual ~PrinterManager();
 
       Q_INVOKABLE void print(const QString& a_PathToImg);
-      Q_INVOKABLE void setPrinterData(const N_IosPrinterSetup::PrinterData& a_Data);
+      Q_INVOKABLE void setPrinterData(const N_IosCommonData::PrinterData& a_Data);
 
       bool printerSet() const;
       void setPrinterSet(bool a_Value);
