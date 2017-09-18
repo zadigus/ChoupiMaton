@@ -1,5 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.2
+import QtQuick.Dialogs 1.2
 
 import IosPrinterSetup 1.0
 
@@ -31,6 +33,46 @@ Rectangle {
     onHandle: startUI.handle(name)
   }
 
+  Dialog {
+    id: needPaperDlg
+    visible: printerMgr.needPaper
+    contentItem: Rectangle {
+      implicitHeight: 100
+      implicitWidth: 400
+      Text {
+        anchors.centerIn: parent
+        text: "Merci d'ajouter du papier !"
+      }
+      MouseArea {
+        anchors.fill: parent
+        onClicked: {
+          needPaperDlg.accepted()
+        }
+      }
+    }
+    onAccepted: printerMgr.needPaper = false
+  }
+
+  Dialog {
+    id: needInkDlg
+    visible: printerMgr.needInk
+    contentItem: Rectangle {
+      implicitHeight: 100
+      implicitWidth: 400
+      Text {
+        anchors.centerIn: parent
+        text: "Merci d'ajouter de l'encre !"
+      }
+      MouseArea {
+        anchors.fill: parent
+        onClicked: {
+          needInkDlg.accepted()
+        }
+      }
+    }
+    onAccepted: printerMgr.needInk = false
+  }
+
   ColumnLayout {
 
     anchors.fill: parent
@@ -54,34 +96,49 @@ Rectangle {
       font {
         family: explanatoryFont.name
         bold: true
-        pixelSize: 25
+        pixelSize: 35
       }
+      horizontalAlignment: Text.AlignHCenter
       wrapMode: Text.Wrap
       leftPadding: 25
       rightPadding: 25
       textFormat: Text.RichText
-      text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+      text: "Bon alors le principe est assez simple pour la plupart d'entre vous. Quand vous aurez appuyé sur le bouton ci-dessous, vous serez pris en photo.
+Nous allons procéder de la façon suivante:<br>
+<ul>
+<li><b>Quatre</b> photos de vous seront prises à un intervalle de <b>trois</b> secondes indiquées par un compte à rebours.
+<li>Les quatre photos seront ensuite imprimées et vous pourrez récupérer le souvenir inoubliable de cette soirée a l'exterieur de la cabine.
+</ul>
+<p>Faites bien attention de regarder vers la caméra si vous voulez par avoir l'air trop cons."
     }
 
-    Rectangle {
+    FontMetrics {
+      id: fontMetrics
+      font {
+        family: explanatoryFont.name
+        pixelSize: 50
+      }
+    }
+
+    Button {
       Layout.alignment: Qt.AlignHCenter
 
-      width: 150
-      height: 50
+      width: fontMetrics.boundingRect(text).width
+      height: fontMetrics.boundingRect(text).height
 
-      visible: printerMgr.isPrinterSet()
+      visible: printerMgr.printerSet
 
-      border { color: "black"; width: 3 }
+      text: "Goooooo !"
+      font: fontMetrics.font
+      onClicked: handle("takePics")
 
-      Text {
-        anchors.centerIn: parent
-        text: "C'est partiiiii !"
-      }
-
-      MouseArea {
+      Rectangle {
         anchors.fill: parent
-        onClicked: handle("takePics")
+        color: "transparent"
+        border.color: "black"
+        border.width: 3
       }
     }
+
   }
 }

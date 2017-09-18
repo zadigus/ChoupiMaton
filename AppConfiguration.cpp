@@ -1,7 +1,6 @@
 #include "AppConfiguration.hpp"
 
 #include <QApplication>
-#include <QSettings>
 #include <QDir>
 #include <QStandardPaths>
 

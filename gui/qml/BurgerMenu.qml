@@ -1,10 +1,13 @@
-import QtQuick 2.7
+import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-Button {
+Rectangle {
   id: burgerMenu
 
+  signal clicked
   signal handle(string name)
+
+  color: "transparent"
 
   Image {
     anchors.fill: parent
@@ -12,6 +15,12 @@ Button {
   }
 
   onClicked: menu.open()
+
+  MouseArea {
+    anchors.fill: parent
+    onClicked: burgerMenu.clicked()
+  }
+
   Menu {
     id: menu
 
