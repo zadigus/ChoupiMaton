@@ -120,21 +120,32 @@ Nous allons procéder de la façon suivante:<br>
       }
     }
 
-    Button {
+    Rectangle {
+      width: 210
+      height: 95
+      color: "transparent"
       Layout.alignment: Qt.AlignHCenter
-
-      width: buttonFontMetrics.boundingRect(text).width
-      height: buttonFontMetrics.boundingRect(text).height
-
-      text: "Goooooo !"
-      font: buttonFontMetrics.font
-      onClicked: handle("takePics")
-
-      Rectangle {
+      Image {
+        id: goBtn
+        signal clicked
+        source: "qrc:/images/Go"
         anchors.fill: parent
-        color: "transparent"
-        border.color: "black"
-        border.width: 3
+        MouseArea {
+          id: mouseArea
+          anchors.fill: parent
+          onClicked: goBtn.clicked()
+        }
+        fillMode:Image.PreserveAspectFit
+        onClicked: {
+          handle("takePics")
+        }
+        states: State {
+          name: "pressed"; when: mouseArea.pressed
+          PropertyChanges {
+            target: goBtn
+            source: "qrc:/images/GoPressed"
+          }
+        }
       }
     }
 

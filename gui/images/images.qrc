@@ -8,5 +8,7 @@
 	<file alias="RandomPreview4">RandomPreviews/random_4.png</file>
 	<file alias="CameraNotAvailable">camera_not_available.jpg</file>
 	<file alias="PrinterNotAvailable">printer_not_available.jpg</file>
+	<file alias="Go">go.png</file>
+	<file alias="GoPressed">go_pressed.png</file>
     </qresource>
 </RCC>
