@@ -20,7 +20,7 @@ Rectangle {
 
   FontLoader {
     id: explanatoryFont
-    source: "qrc:/fonts/RujisHandWriting"
+    source: "qrc:/fonts/Bouquinistes"
   }
 
   Timer {

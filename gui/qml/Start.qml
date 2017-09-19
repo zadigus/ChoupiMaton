@@ -24,7 +24,7 @@ Rectangle {
 
   FontLoader {
     id: explanatoryFont
-    source: "qrc:/fonts/RujisHandWriting"
+    source: "qrc:/fonts/Bouquinistes"
   }
 
   BurgerMenu {
@@ -107,9 +107,9 @@ Rectangle {
 Nous allons procéder de la façon suivante:<br>
 <ul>
 <li><b>Quatre</b> photos de vous seront prises à un intervalle de <b>trois</b> secondes indiquées par un compte à rebours.
-<li>Les quatre photos seront ensuite imprimées et vous pourrez récupérer le souvenir inoubliable de cette soirée a l'exterieur de la cabine.
+<li>Les quatre photos seront ensuite imprimées et vous pourrez récupérer le souvenir inoubliable de cette soirée à l'extérieur de la cabine.
 </ul>
-<p>Faites bien attention de regarder vers la caméra si vous voulez par avoir l'air trop cons."
+<p>Faites bien attention de regarder vers la caméra si vous ne voulez pas avoir l'air trop cons."
     }
 
     FontMetrics {

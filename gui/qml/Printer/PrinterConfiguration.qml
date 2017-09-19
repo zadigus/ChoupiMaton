@@ -17,7 +17,7 @@ Rectangle {
 
   FontLoader {
     id: textFont
-    source: "qrc:/fonts/RujisHandWriting"
+    source: "qrc:/fonts/Bouquinistes"
   }
 
   Image {

@@ -3,5 +3,6 @@
         <file alias="RujisHandWriting">RujisHandwritingFont.ttf</file>
         <file>RujisHandwritingFontv.2.0.ttf</file>
 	<file alias="AlexBrush">AlexBrush-Regular.ttf</file>
+	<file alias="Bouquinistes">Bouquinistes.ttf</file>
     </qresource>
 </RCC>

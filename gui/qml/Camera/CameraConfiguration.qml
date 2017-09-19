@@ -101,7 +101,7 @@ Rectangle {
         from: 1
         to: camera.maximumDigitalZoom
         value: appConfig.zoom
-        stepSize: 1
+        stepSize: 0.1
 
         Binding {
           target: appConfig
