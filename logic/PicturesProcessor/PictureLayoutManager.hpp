@@ -5,6 +5,7 @@
 
 #include <QObject>
 #include <QImage>
+#include <QFont>
 
 namespace N_PicturesProcessor {
 
@@ -28,6 +29,10 @@ namespace N_PicturesProcessor {
       Q_DISABLE_COPY(PictureLayoutManager)
 
       QImage transform(const QImage& a_Img);
+      QPoint bottomTextPosition() const;
+      QSize size() const;
+      int getBottomTextWidth() const;
+      void drawBottomText();
 
     private:
       static const int NB_COLS;
@@ -40,11 +45,17 @@ namespace N_PicturesProcessor {
       int m_SinglePictureWidth;
       int m_SinglePictureHeight;
       int m_CurrentPicture;
+
+      QString m_BottomText;
+      QFont m_BottomTextFont;
+      int m_BottomTextMargin;
   };
 
   //==============================
   // non-member methods
   //==============================
+  QFont getBottomTextFont();
+  QString getBottomText();
 
   //==============================
   // inline methods implementation

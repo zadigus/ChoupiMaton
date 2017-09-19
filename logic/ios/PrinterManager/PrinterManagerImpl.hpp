@@ -1,7 +1,7 @@
 #ifndef IOS_PRINTERMANAGER_PRINTERMANAGERIMPL_HPP
 #define IOS_PRINTERMANAGER_PRINTERMANAGERIMPL_HPP
 
-#import "PrinterManager/PrinterManagerImpl.hpp"
+#include "PrinterManager/PrinterManagerImpl.hpp"
 
 Q_FORWARD_DECLARE_OBJC_CLASS(UIPrinter);
 Q_FORWARD_DECLARE_OBJC_CLASS(UIPrintInfo);

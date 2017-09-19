@@ -19,7 +19,6 @@ class AppConfiguration : public QObject
   Q_PROPERTY(qreal bottomMarginRatio READ bottomMarginRatio WRITE setBottomMarginRatio NOTIFY bottomMarginRatioChanged)
   Q_PROPERTY(qreal scaleFactor READ scaleFactor WRITE setScaleFactor NOTIFY scaleFactorChanged)
   Q_PROPERTY(qreal rotationAngle READ rotationAngle WRITE setRotationAngle NOTIFY rotationAngleChanged)
-  Q_PROPERTY(int printTime READ printTime WRITE setPrintTime NOTIFY printTimeChanged)
 
   public:
     explicit AppConfiguration(QObject* a_Parent = 0);
@@ -45,9 +44,6 @@ class AppConfiguration : public QObject
     qreal rotationAngle() const;
     void setRotationAngle(qreal a_Value);
 
-    int printTime() const;
-    void setPrintTime(int a_Value);
-
   public slots:
 
   private:
@@ -60,7 +56,6 @@ class AppConfiguration : public QObject
     void bottomMarginRatioChanged();
     void scaleFactorChanged();
     void rotationAngleChanged();
-    void printTimeChanged();
 
   private:
     mutable QSettings m_Settings;
