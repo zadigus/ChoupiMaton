@@ -30,8 +30,21 @@ Rectangle {
   BurgerMenu {
     width: 32
     height: 32
-    onHandle: startUI.handle(name)
+    onHandle: startUI.handle(name) // popup.open()
   }
+
+//  Popup {
+//    id: popup
+//    modal: true
+//    focus: true
+//    background: Rectangle {
+//      implicitWidth: 200
+//      implicitHeight: 200
+//      border.color: "black"
+//    }
+//    contentItem: Column {}
+//    closePolicy: Popup.NoAutoClose
+//  }
 
   Dialog {
     id: needPaperDlg
