@@ -24,6 +24,7 @@ Popup {
       Layout.alignment: Qt.AlignHCenter
       echoMode: TextInput.Password
       placeholderText: qsTr("Enter password")
+      focus: true
       onTextChanged: {
         if(passwordMgr.check(text))
         {

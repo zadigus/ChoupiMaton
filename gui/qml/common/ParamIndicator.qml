@@ -9,6 +9,8 @@ ColumnLayout {
   property alias to: control.to
   property alias value: control.value
   property alias stepSize: control.stepSize
+  property alias displayText: controlDisplay.text
+  property alias snapMode: control.snapMode
 
   spacing: 25
 
@@ -31,13 +33,7 @@ ColumnLayout {
 
   Slider {
     id: control
-
+    snapMode: Slider.SnapAlways
     Layout.alignment: Qt.AlignHCenter
-
-    Binding {
-      target: controlDisplay
-      property: "text"
-      value: Math.round(control.value * 10) / 10
-    }
   }
 }

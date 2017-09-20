@@ -75,19 +75,13 @@ Rectangle {
         value: appConfig.colorTemp
         stepSize: 100
 
-        onValueChanged: console.log("lock status = " + camera.lockStatus)
-
-        Binding {
-          target: appConfig
-          property: "colorTemp"
-          value: colorTempInd.value
-        }
-
         Binding {
           target: camera.imageProcessing
           property: "manualWhiteBalance"
           value: colorTempInd.value
         }
+
+        onValueChanged: displayText = Math.round(value)
       }
 
       Common.ParamIndicator {
@@ -95,25 +89,45 @@ Rectangle {
 
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignHCenter
-
+        snapMode: Slider.NoSnap
         name: "Zoom"
 
-        from: 1
-        to: camera.maximumDigitalZoom
-        value: appConfig.zoom
+        // we map the slider interval [minVal, maxVal] to the zoom interval [minZoom, maxZoom]
+        property real minVal: 0
+        property real maxVal: 1
+        property real minZoom: 1
+        property real maxZoom: camera.maximumDigitalZoom
+
+        // the slider value (maxVal - minVal) / 2 is mapped to the zoom value N * minZoom
+        property real n: 2
+
+        // exponential interpolation coefficients
+        property real coeffA: (Math.pow(minZoom, 2) * Math.pow(n - 1, 2))/(maxZoom - minZoom * (2 * n - 1))
+        property real coeffB: 2.0 / maxVal * Math.log((minZoom * (n - 1)) / coeffA + 1)
+        property real coeffC: minZoom - coeffA
+
+        from: minVal
+        to: maxVal
+        value: zoomInd.invZoom(appConfig.zoom)
         stepSize: 0.1
 
-        Binding {
-          target: appConfig
-          property: "zoom"
-          value: zoomInd.value
+        function zoom(sliderValue)
+        {
+          return coeffA * Math.exp(coeffB * sliderValue) + coeffC
+        }
+
+        function invZoom(zoomValue)
+        {
+          return 1 / coeffB * Math.log((zoomValue - coeffC) / coeffA)
         }
 
         Binding {
           target: camera
           property: "digitalZoom"
-          value: zoomInd.value
+          value: zoomInd.zoom(zoomInd.value)
         }
+
+        onValueChanged: displayText = Math.round(zoomInd.zoom(value) * 100) / 100
       }
 
       CameraListButton {
@@ -158,6 +172,8 @@ Rectangle {
 
         text: "Close"
         onClicked: {
+          appConfig.zoom = zoomInd.zoom(zoomInd.value)
+          appConfig.colorTemp = colorTempInd.value
           handle("start")
         }
       }
