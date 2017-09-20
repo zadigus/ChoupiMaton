@@ -30,21 +30,20 @@ Rectangle {
   BurgerMenu {
     width: 32
     height: 32
-    onHandle: startUI.handle(name) // popup.open()
+    onHandle: popup.run(name)
   }
 
-//  Popup {
-//    id: popup
-//    modal: true
-//    focus: true
-//    background: Rectangle {
-//      implicitWidth: 200
-//      implicitHeight: 200
-//      border.color: "black"
-//    }
-//    contentItem: Column {}
-//    closePolicy: Popup.NoAutoClose
-//  }
+  PasswordPopup {
+    id: popup
+
+    x: (startUI.width - width) / 2
+    y: (startUI.height - height) / 2
+
+    onAccepted: {
+      popup.close()
+      startUI.handle(popup.name)
+    }
+  }
 
   Dialog {
     id: needPaperDlg

@@ -9,6 +9,10 @@ namespace N_PrinterManager {
   class PrinterManager;
 }
 
+namespace N_PasswordManager {
+  class PasswordManager;
+}
+
 class AppConfiguration;
 
 class QQmlApplicationEngine;
@@ -36,6 +40,7 @@ class EngineConfigurator
     AppConfiguration* m_AppConfig;
     N_PicturesProcessor::PicturesProcessor* m_PicsProc;
     N_PrinterManager::PrinterManager* m_PrinterMgr;
+    N_PasswordManager::PasswordManager* m_PasswordMgr;
 };
 
 #endif // ENGINECONFIGURATOR_HPP

@@ -6,6 +6,7 @@
         <file>Start.qml</file>
 	<file>Print.qml</file>
 	<file>SaveOnly.qml</file>
+	<file>PasswordPopup.qml</file>
         <file>Camera/ImagePreview.qml</file>
         <file>Camera/CameraNotAvailable.qml</file>
 	<file>Camera/CameraConfiguration.qml</file>

@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
   QQmlApplicationEngine engine;
   EngineConfigurator ec(engine);
 
-  initLogs();
+//  initLogs();
 
   ec.setupContext();
   ec.setupSettings();

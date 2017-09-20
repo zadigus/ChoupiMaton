@@ -6,6 +6,8 @@
 
 #include "PrinterManager/PrinterManager.hpp"
 
+#include "PasswordManager/PasswordManager.hpp"
+
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
@@ -15,6 +17,7 @@ EngineConfigurator::EngineConfigurator(QQmlApplicationEngine& a_Engine)
   , m_AppConfig(new AppConfiguration)
   , m_PicsProc(new N_PicturesProcessor::PicturesProcessor)
   , m_PrinterMgr(new N_PrinterManager::PrinterManager)
+  , m_PasswordMgr(new N_PasswordManager::PasswordManager)
 { }
 
 //-----------------------------------------------------
@@ -38,6 +41,7 @@ void EngineConfigurator::setupContext()
   QQmlEngine::setContextForObject(m_PicsProc, context);
 
   context->setContextProperty("printerMgr", m_PrinterMgr);
+  context->setContextProperty("passwordMgr", m_PasswordMgr);
 
   setupConnections();
 }

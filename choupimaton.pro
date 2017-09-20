@@ -7,6 +7,7 @@ QT += quick qml multimedia widgets
 
 PICSPROC_FOLDER = logic/PicturesProcessor
 PRINTERMANAGER_FOLDER = logic/PrinterManager
+PASSWORDMGR_FOLDER = logic/PasswordManager
 CORE_FOLDER = core
 COMMON_FOLDER = common
 
@@ -18,7 +19,8 @@ SOURCES += main.cpp \
     $${PICSPROC_FOLDER}/PictureLayoutManager.cpp \
     $${CORE_FOLDER}/Utils.cpp \
     $${CORE_FOLDER}/Logger/Logger.cpp \
-    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp
+    $${PRINTERMANAGER_FOLDER}/PrinterManager.cpp \
+    $${PASSWORDMGR_FOLDER}/PasswordManager.cpp
 
 HEADERS += EngineConfigurator.hpp \
     AppConfiguration.hpp \
@@ -29,7 +31,8 @@ HEADERS += EngineConfigurator.hpp \
     $${CORE_FOLDER}/Global.hpp \
     $${CORE_FOLDER}/Logger/Logger.hpp \
     $${PRINTERMANAGER_FOLDER}/PrinterManager.hpp \
-    $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp
+    $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
+    $${PASSWORDMGR_FOLDER}/PasswordManager.hpp
 
 RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \
