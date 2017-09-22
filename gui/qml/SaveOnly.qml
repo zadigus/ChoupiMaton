@@ -52,6 +52,7 @@ Rectangle {
 
     WaitingSoftozor {
       Layout.alignment: Qt.AlignHCenter
+      Layout.leftMargin: -150
     }
 
     Text {

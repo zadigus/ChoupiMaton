@@ -84,7 +84,9 @@ Rectangle {
     anchors.centerIn: parent
     z: 10
     font.pixelSize: 500
-    color: "yellow"
+    color: Qt.rgba(0.78, 0.48, 0.58, 1)
+    style: Text.Outline
+    styleColor: "black"
   }
 
   VideoOutput {
