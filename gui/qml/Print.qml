@@ -50,16 +50,8 @@ Rectangle {
       text: "Impression en cours ..."
     }
 
-    Rectangle {
-      color: "transparent"
-      width: 315
-      height: 341.5
+    WaitingSoftozor {
       Layout.alignment: Qt.AlignHCenter
-      AnimatedImage {
-        anchors.fill: parent
-        source: "qrc:/images/Loading"
-        fillMode:Image.PreserveAspectFit
-      }
     }
 
     Text {

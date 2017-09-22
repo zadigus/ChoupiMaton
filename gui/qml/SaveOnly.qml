@@ -50,6 +50,10 @@ Rectangle {
       text: "Sauvegarde en cours ..."
     }
 
+    WaitingSoftozor {
+      Layout.alignment: Qt.AlignHCenter
+    }
+
     Text {
       Layout.alignment: Qt.AlignHCenter
       Layout.fillWidth: true

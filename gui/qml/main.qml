@@ -19,7 +19,7 @@ Window {
   Loader {
     id: mainLoader
     anchors.fill: parent
-    source: pages["print"]
+    source: pages["start"]
   }
 
   Connections {
