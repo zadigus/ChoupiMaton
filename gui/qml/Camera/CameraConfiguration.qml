@@ -40,6 +40,7 @@ Rectangle {
     fillMode: VideoOutput.PreserveAspectCrop
     autoOrientation: true
     visible: camera.imageCapture.ready
+    rotation: Qt.platform.os === "ios" && camera.position === Camera.FrontFace ? 180 : 0 // this is due to a bug in Qt
   }
 
   CameraNotAvailable {

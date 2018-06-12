@@ -49,6 +49,7 @@ ios {
     ios_icon.files = $$files($$PWD/icons/icon*.png)
     launch_image.files = $$files($$PWD/ios/LaunchScreen/softozor.*)
     QMAKE_BUNDLE_DATA += ios_icon launch_image
+    xcode_product_bundle_identifier_setting.value = "com.softozor.choupimaton" # this is required because PRODUCT_BUNDLE_IDENTIFIER = com.softozor.choupimaton doesn't work
 
     HEADERS += $${IOS_PRINTERSETUP_FOLDER}/PrinterSetup.hpp
 
