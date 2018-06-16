@@ -8,6 +8,7 @@ Window {
   visible: true
 
   property var pages: {
+    "error.settingsMissing" : "qrc:/qml/ErrorSettings.qml",
     "start" : "qrc:/qml/Start.qml",
     "print" : "qrc:/qml/Print.qml",
     "saveOnly" : "qrc:/qml/SaveOnly.qml",
@@ -19,7 +20,7 @@ Window {
   Loader {
     id: mainLoader
     anchors.fill: parent
-    source: pages["start"]
+    source: appConfig.settingsFileExists ? pages["start"] : pages["error.settingsMissing"]
   }
 
   Connections {

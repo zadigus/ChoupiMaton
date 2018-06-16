@@ -2,21 +2,22 @@
     <qresource prefix="/qml">
         <file>Camera/PicturesTaker.qml</file>
         <file>main.qml</file>
-	<file>BurgerMenu.qml</file>
+        <file>BurgerMenu.qml</file>
         <file>Start.qml</file>
-	<file>Print.qml</file>
-	<file>SaveOnly.qml</file>
-	<file>WaitingSoftozor.qml</file>
-	<file>PasswordPopup.qml</file>
+        <file>Print.qml</file>
+        <file>SaveOnly.qml</file>
+        <file>WaitingSoftozor.qml</file>
+        <file>PasswordPopup.qml</file>
         <file>Camera/ImagePreview.qml</file>
         <file>Camera/CameraNotAvailable.qml</file>
-	<file>Camera/CameraConfiguration.qml</file>
-	<file>common/ParamIndicator.qml</file>
-	<file>Camera/CameraListButton.qml</file>
-	<file>Camera/CameraListPopup.qml</file>
-	<file>Camera/ResolutionListButton.qml</file>
-	<file>Camera/ResolutionListPopup.qml</file>
-	<file>Camera/Popup.qml</file>
-	<file>Printer/PrinterConfiguration.qml</file>
+        <file>Camera/CameraConfiguration.qml</file>
+        <file>common/ParamIndicator.qml</file>
+        <file>Camera/CameraListButton.qml</file>
+        <file>Camera/CameraListPopup.qml</file>
+        <file>Camera/ResolutionListButton.qml</file>
+        <file>Camera/ResolutionListPopup.qml</file>
+        <file>Camera/Popup.qml</file>
+        <file>Printer/PrinterConfiguration.qml</file>
+        <file>ErrorSettings.qml</file>
     </qresource>
 </RCC>

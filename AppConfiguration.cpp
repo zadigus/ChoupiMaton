@@ -1,8 +1,11 @@
 #include "AppConfiguration.hpp"
 
+#include "Logger/Logger.hpp"
+
 #include <QApplication>
 #include <QDir>
 #include <QStandardPaths>
+#include <QMessageBox>
 
 //----------------------------------------------------------------------------------------------
 QString configFilename()
@@ -10,11 +13,41 @@ QString configFilename()
   return QDir(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]).absoluteFilePath(QCoreApplication::applicationName().append(".conf"));
 }
 
+//-----------------------------------------------------
+void initLogs()
+{
+  N_Logger::resetLogFile();
+  qInstallMessageHandler(N_Logger::message);
+}
+
 //----------------------------------------------------------------------------------------------
 AppConfiguration::AppConfiguration(QObject* a_Parent)
   : QObject(a_Parent)
   , m_Settings(configFilename(), QSettings::IniFormat)
-{ }
+{
+  if(logsEnabled())
+  {
+    initLogs();
+  }
+}
+
+//----------------------------------------------------------------------------------------------
+bool AppConfiguration::settingsFileExists() const
+{
+  m_Settings.beginGroup("Logs");
+  auto exists(m_Settings.contains("activated"));
+  m_Settings.endGroup();
+  return exists;
+}
+
+//----------------------------------------------------------------------------------------------
+bool AppConfiguration::logsEnabled() const
+{
+  m_Settings.beginGroup("Logs");
+  auto result(m_Settings.value("activated", true).toBool());
+  m_Settings.endGroup();
+  return result;
+}
 
 //----------------------------------------------------------------------------------------------
 qreal AppConfiguration::zoom() const

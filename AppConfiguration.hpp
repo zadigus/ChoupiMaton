@@ -19,9 +19,14 @@ class AppConfiguration : public QObject
   Q_PROPERTY(qreal bottomMarginRatio READ bottomMarginRatio WRITE setBottomMarginRatio NOTIFY bottomMarginRatioChanged)
   Q_PROPERTY(qreal scaleFactor READ scaleFactor WRITE setScaleFactor NOTIFY scaleFactorChanged)
   Q_PROPERTY(qreal rotationAngle READ rotationAngle WRITE setRotationAngle NOTIFY rotationAngleChanged)
+  Q_PROPERTY(bool settingsFileExists READ settingsFileExists)
 
   public:
-    explicit AppConfiguration(QObject* a_Parent = 0);
+    explicit AppConfiguration(QObject* a_Parent = nullptr);
+
+    bool logsEnabled() const;
+
+    bool settingsFileExists() const;
 
     qreal zoom() const;
     void setZoom(qreal a_Value);
@@ -46,8 +51,6 @@ class AppConfiguration : public QObject
 
   public slots:
 
-  private:
-
   signals:
     void zoomChanged();
     void colorTempChanged();
@@ -65,6 +68,7 @@ class AppConfiguration : public QObject
 // non-member methods
 //==============================
 QString configFilename();
+void initLogs();
 
 //==============================
 // inline methods implementation
