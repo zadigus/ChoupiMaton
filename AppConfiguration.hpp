@@ -67,7 +67,6 @@ class AppConfiguration : public QObject
 //==============================
 // non-member methods
 //==============================
-QString configFilename();
 void initLogs();
 
 //==============================

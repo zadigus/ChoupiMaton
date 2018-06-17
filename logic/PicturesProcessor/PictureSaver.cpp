@@ -1,13 +1,14 @@
 #include "PictureSaver.hpp"
 
-#include <QStandardPaths>
+#include "common/ConfigHelpers.hpp"
+
 #include <QDirIterator>
 #include <QFileInfo>
 #include <QImage>
 
 namespace N_PicturesProcessor {
 
-  const QDir PictureSaver::TARGET_DIR = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]; // special to ios
+  const QDir PictureSaver::TARGET_DIR = N_Common::appDataLocation();
   const QString PictureSaver::FILE_PREFIX = QString::fromStdString("pic");
   const QString PictureSaver::FILE_SEP = QString::fromStdString("-");
   const QString PictureSaver::FILE_EXT = QString::fromStdString(".png");

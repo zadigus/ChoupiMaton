@@ -32,7 +32,8 @@ HEADERS += EngineConfigurator.hpp \
     $${CORE_FOLDER}/Logger/Logger.hpp \
     $${PRINTERMANAGER_FOLDER}/PrinterManager.hpp \
     $${PRINTERMANAGER_FOLDER}/PrinterManagerImpl.hpp \
-    $${PASSWORDMGR_FOLDER}/PasswordManager.hpp
+    $${PASSWORDMGR_FOLDER}/PasswordManager.hpp \
+    $${COMMON_FOLDER}/ConfigHelpers.hpp
 
 RESOURCES += gui/qml/qml.qrc \
  gui/images/images.qrc \

@@ -2,16 +2,9 @@
 
 #include "Logger/Logger.hpp"
 
-#include <QApplication>
-#include <QDir>
-#include <QStandardPaths>
-#include <QMessageBox>
+#include "common/ConfigHelpers.hpp"
 
-//----------------------------------------------------------------------------------------------
-QString configFilename()
-{
-  return QDir(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]).absoluteFilePath(QCoreApplication::applicationName().append(".conf"));
-}
+#include <QMessageBox>
 
 //-----------------------------------------------------
 void initLogs()
@@ -23,7 +16,7 @@ void initLogs()
 //----------------------------------------------------------------------------------------------
 AppConfiguration::AppConfiguration(QObject* a_Parent)
   : QObject(a_Parent)
-  , m_Settings(configFilename(), QSettings::IniFormat)
+  , m_Settings(N_Common::configFilename(), QSettings::IniFormat)
 {
   if(logsEnabled())
   {

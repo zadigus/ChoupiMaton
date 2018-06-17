@@ -19,7 +19,7 @@ namespace N_PasswordManager {
       Q_INVOKABLE bool check(const QString& a_Password) const;
 
     private:
-      Q_DISABLE_COPY(PasswordManager);
+      Q_DISABLE_COPY(PasswordManager)
 
       QString password() const;
 
@@ -32,7 +32,6 @@ namespace N_PasswordManager {
   //==============================
   // non-member methods
   //==============================
-  QString configFilename();
 
   //==============================
   // inline methods implementation

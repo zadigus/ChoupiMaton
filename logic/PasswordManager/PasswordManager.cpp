@@ -1,20 +1,13 @@
 #include "PasswordManager.hpp"
 
-#include <QStandardPaths>
-#include <QDir>
+#include "common/ConfigHelpers.hpp"
 
 namespace N_PasswordManager {
-
-  //----------------------------------------------------------------------------------------------
-  QString configFilename()
-  {
-    return QDir(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]).absoluteFilePath("Password.conf");
-  }
 
   //-----------------------------------------------------
   PasswordManager::PasswordManager(QObject* a_Parent)
     : QObject(a_Parent)
-    , m_Settings(configFilename(), QSettings::IniFormat)
+    , m_Settings(N_Common::configFilename(), QSettings::IniFormat)
   { }
 
   //-----------------------------------------------------

@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QImage>
 #include <QFont>
+#include <QSettings>
 
 namespace N_PicturesProcessor {
 
@@ -28,6 +29,8 @@ namespace N_PicturesProcessor {
     private:
       Q_DISABLE_COPY(PictureLayoutManager)
 
+      QString getBottomText() const;
+
       QImage transform(const QImage& a_Img);
       QPoint bottomTextPosition() const;
       QSize size() const;
@@ -37,6 +40,8 @@ namespace N_PicturesProcessor {
     private:
       static const int NB_COLS;
       static const int NB_ROWS;
+
+      mutable QSettings m_Settings;
 
       QImage m_Output;
       qreal m_ScaleFactor;

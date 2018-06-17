@@ -4,21 +4,14 @@
 #include "ios/PrinterManager/PrinterManagerImpl.hpp"
 #include "Data/PrinterData.hpp"
 
-#include <QDir>
-#include <QStandardPaths>
+#include "common/ConfigHelpers.hpp"
 
 namespace N_PrinterManager {
-
-  //----------------------------------------------------------------------------------------------
-  QString configFilename()
-  {
-    return QDir(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]).absoluteFilePath("Printer.conf");
-  }
 
   //-----------------------------------------------------
   PrinterManager::PrinterManager(QObject* a_Parent)
     : QObject(a_Parent)
-    , m_Settings(configFilename(), QSettings::IniFormat)
+    , m_Settings(N_Common::configFilename(), QSettings::IniFormat)
 #ifdef Q_OS_IOS
     , m_Impl(new N_IosPrinterManager::PrinterManagerImpl())
 #endif

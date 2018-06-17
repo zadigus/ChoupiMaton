@@ -1,5 +1,7 @@
 #include "PictureLayoutManager.hpp"
 
+#include "common/ConfigHelpers.hpp"
+
 #include <QPainter>
 #include <QFontDatabase>
 #include <QFontMetrics>
@@ -13,13 +15,6 @@ namespace N_PicturesProcessor {
   const int PictureLayoutManager::NB_ROWS = 2;
 
   //-----------------------------------------------------
-  QString getBottomText()
-  {
-    QString result("ChoupiWedding, " + QDate::currentDate().toString("dd.MM.yy"));
-    return result;
-  }
-
-  //-----------------------------------------------------
   QFont getBottomTextFont()
   {
     auto id(QFontDatabase::addApplicationFont(":/fonts/AlexBrush"));
@@ -31,6 +26,7 @@ namespace N_PicturesProcessor {
   //-----------------------------------------------------
   PictureLayoutManager::PictureLayoutManager(QObject* a_Parent)
     : QObject(a_Parent)
+    , m_Settings(N_Common::configFilename(), QSettings::IniFormat)
     , m_ScaleFactor(0)
     , m_RotationAngle(0)
     , m_BottomMarginRatio(0)
@@ -41,6 +37,15 @@ namespace N_PicturesProcessor {
     , m_BottomTextFont(getBottomTextFont())
     , m_BottomTextMargin(25)
   { }
+
+  //-----------------------------------------------------
+  QString PictureLayoutManager::getBottomText() const
+  {
+    m_Settings.beginGroup("Text");
+    auto result(m_Settings.value("pictureBottom", QDate::currentDate().toString("dd.MM.yy")).toString());
+    m_Settings.endGroup();
+    return result;
+  }
 
   //-----------------------------------------------------
   int PictureLayoutManager::getBottomTextWidth() const
@@ -61,8 +66,8 @@ namespace N_PicturesProcessor {
   //-----------------------------------------------------
   QSize PictureLayoutManager::size() const
   {
-    int bottomMargin(m_BottomMarginRatio * m_SinglePictureHeight);
-    return QSize(NB_COLS * m_SinglePictureWidth, NB_ROWS * m_SinglePictureHeight + bottomMargin);
+    auto bottomMargin(m_BottomMarginRatio * m_SinglePictureHeight);
+    return QSize(NB_COLS * m_SinglePictureWidth, NB_ROWS * m_SinglePictureHeight + static_cast<int>(bottomMargin));
   }
 
   //-----------------------------------------------------
@@ -100,14 +105,14 @@ namespace N_PicturesProcessor {
   int PictureLayoutManager::x() const
   {
     auto currentCol(m_CurrentPicture % NB_COLS);
-    return m_SinglePictureWidth * (currentCol + 1. / 2. * (1 - m_ScaleFactor));
+    return static_cast<int>(m_SinglePictureWidth * (currentCol + 1. / 2. * (1 - m_ScaleFactor)));
   }
 
   //-----------------------------------------------------
   int PictureLayoutManager::y() const
   {
     auto currentRow(floor(m_CurrentPicture / NB_COLS));
-    return m_SinglePictureHeight * (currentRow + 1. / 2. * (1 - m_ScaleFactor));
+    return static_cast<int>(m_SinglePictureHeight * (currentRow + 1. / 2. * (1 - m_ScaleFactor)));
   }
 
   //-----------------------------------------------------

@@ -53,7 +53,7 @@ namespace N_PrinterManager {
       void setNeedInk(bool a_Value);
 
     private:
-      Q_DISABLE_COPY(PrinterManager);
+      Q_DISABLE_COPY(PrinterManager)
 
     signals:
       void printDurationChanged();
@@ -75,7 +75,6 @@ namespace N_PrinterManager {
   //==============================
   // non-member methods
   //==============================
-  QString configFilename();
 
   //==============================
   // inline methods implementation

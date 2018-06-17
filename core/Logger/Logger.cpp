@@ -2,30 +2,21 @@
 
 #include "core/Utils.hpp"
 
-#include <QApplication>
+#include "common/ConfigHelpers.hpp"
+
 #include <QDate>
-#include <QFileInfo>
-#include <QDir>
-#include <QStandardPaths>
 
 namespace N_Logger {
 
   //----------------------------------------------------------------------------------------------
   void resetLogFile()
   {
-    QFile logFile(N_Logger::filename());
+    QFile logFile(N_Common::logFilename());
     if(!logFile.exists())
     {
       logFile.open(QIODevice::WriteOnly | QIODevice::Text);
       logFile.close();
     }
-  }
-
-  //----------------------------------------------------------------------------------------------
-  QString filename()
-  {
-    QDir logDir(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]); // this is ios-specific
-    return logDir.absoluteFilePath(QCoreApplication::applicationName().append(".log"));
   }
 
   //----------------------------------------------------------------------------------------------
@@ -52,14 +43,12 @@ namespace N_Logger {
       case QtInfoMsg:
         msg << "[INF]";
         break;
-      default:
-        break;
     }
 
     msg << coreMessage(a_Context);
     msg << localMsg.constData();
 
-    N_Utils::writeTextToFile(filename(), QIODevice::Append, msg.join(" "));
+    N_Utils::writeTextToFile(N_Common::logFilename(), QIODevice::Append, msg.join(" "));
   }
 
   //----------------------------------------------------------------------------------------------
