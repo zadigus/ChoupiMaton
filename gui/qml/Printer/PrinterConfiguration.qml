@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.3
 import IosPrinterSetup 1.0
 
 import "../common" as Common
+import "../MenuNames.js" as MenuNames
 
 Rectangle {
   id : mainUI
@@ -154,7 +155,7 @@ Rectangle {
         text: "Close"
         onClicked: {
           printerSetup.visible = false
-          handle("start")
+          handle(MenuNames.START)
         }
       }
 

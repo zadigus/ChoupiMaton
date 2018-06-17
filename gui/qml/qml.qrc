@@ -19,5 +19,6 @@
         <file>Camera/Popup.qml</file>
         <file>Printer/PrinterConfiguration.qml</file>
         <file>ErrorSettings.qml</file>
+        <file>MenuNames.js</file>
     </qresource>
 </RCC>

@@ -5,6 +5,8 @@ import QtQuick.Dialogs 1.2
 
 import IosPrinterSetup 1.0
 
+import "./MenuNames.js" as MenuNames
+
 Rectangle {
   id: startUI
 
@@ -41,7 +43,7 @@ Rectangle {
 
     onAccepted: {
       popup.close()
-      startUI.handle(popup.name)
+      popup.name == MenuNames.QUIT ? Qt.quit() : startUI.handle(popup.name)
     }
   }
 
@@ -149,7 +151,7 @@ Nous allons procéder de la façon suivante:<br>
         }
         fillMode:Image.PreserveAspectFit
         onClicked: {
-          handle("takePics")
+          handle(MenuNames.TAKE_PICS)
         }
         states: State {
           name: "pressed"; when: mouseArea.pressed

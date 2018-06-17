@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtMultimedia 5.8
 import QtQuick.Layouts 1.3
 
+import "../MenuNames.js" as MenuNames
+
 Rectangle {
   id : cameraUI
 
@@ -74,7 +76,7 @@ Rectangle {
         // if we do it right after the last capture,
         // the last preview takes about 6 seconds to appear...
         picsProcessor.save()
-        printerMgr.printerSet ? handle("print") : handle("saveOnly")
+        printerMgr.printerSet ? handle(MenuNames.PRINT) : handle(MenuNames.SAVE_ONLY)
       }
     }
   }

@@ -4,6 +4,7 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
 import "../common" as Common
+import "../MenuNames.js" as MenuNames
 
 Rectangle {
   id : cameraUI
@@ -175,7 +176,7 @@ Rectangle {
         onClicked: {
           appConfig.zoom = zoomInd.zoom(zoomInd.value)
           appConfig.colorTemp = colorTempInd.value
-          handle("start")
+          handle(MenuNames.START)
         }
       }
 

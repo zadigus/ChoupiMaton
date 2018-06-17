@@ -1,6 +1,8 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
+import "./MenuNames.js" as MenuNames
+
 Rectangle {
   id: burgerMenu
 
@@ -28,17 +30,17 @@ Rectangle {
 
     MenuItem {
       text: qsTr("Camera...")
-      onTriggered: handle("cameraConfig")
+      onTriggered: handle(MenuNames.CAMERA_CONFIG)
     }
 
     MenuItem {
       text: qsTr("Printer...")
-      onTriggered: handle("printerConfig")
+      onTriggered: handle(MenuNames.PRINTER_CONFIG)
     }
 
     MenuItem {
       text: qsTr("Quit")
-      onTriggered: Qt.quit()
+      onTriggered: handle(MenuNames.QUIT)
     }
   }
 }
