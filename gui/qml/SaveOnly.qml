@@ -49,7 +49,7 @@ Rectangle {
         family: titleFont.name
         pixelSize: 125
       }
-      text: "Sauvegarde en cours ..."
+      text: appConfig.savingTitle
     }
 
     WaitingSoftozor {
