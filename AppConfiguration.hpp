@@ -12,6 +12,8 @@ class AppConfiguration : public QObject
 {
   Q_OBJECT
 
+  Q_PROPERTY(QString fotozorInstanceName READ fotozorInstanceName)
+  Q_PROPERTY(QString introductionText READ introductionText)
   Q_PROPERTY(qreal zoom READ zoom WRITE setZoom NOTIFY zoomChanged)
   Q_PROPERTY(qreal colorTemp READ colorTemp WRITE setColorTemp NOTIFY colorTempChanged)
   Q_PROPERTY(QSize resolution READ resolution WRITE setResolution NOTIFY resolutionChanged)
@@ -27,6 +29,10 @@ class AppConfiguration : public QObject
     bool logsEnabled() const;
 
     bool settingsFileExists() const;
+
+    QString introductionText() const;
+
+    QString fotozorInstanceName() const;
 
     qreal zoom() const;
     void setZoom(qreal a_Value);

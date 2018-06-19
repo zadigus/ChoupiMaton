@@ -43,6 +43,24 @@ bool AppConfiguration::logsEnabled() const
 }
 
 //----------------------------------------------------------------------------------------------
+QString AppConfiguration::fotozorInstanceName() const
+{
+  m_Settings.beginGroup("Text");
+  auto result(m_Settings.value("instanceName", "Fotozor").toString());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
+QString AppConfiguration::introductionText() const
+{
+  m_Settings.beginGroup("Text");
+  auto result(m_Settings.value("introductionText", "This is the introduction").toString());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
 qreal AppConfiguration::zoom() const
 {
   m_Settings.beginGroup("Camera");
