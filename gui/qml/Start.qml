@@ -1,7 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.2
-import QtQuick.Dialogs 1.2
 
 import IosPrinterSetup 1.0
 
@@ -45,46 +44,6 @@ Rectangle {
       popup.close()
       popup.name == MenuNames.QUIT ? Qt.quit() : startUI.handle(popup.name)
     }
-  }
-
-  Dialog {
-    id: needPaperDlg
-    visible: printerMgr.needPaper
-    contentItem: Rectangle {
-      implicitHeight: 100
-      implicitWidth: 400
-      Text {
-        anchors.centerIn: parent
-        text: "Merci d'ajouter du papier !"
-      }
-      MouseArea {
-        anchors.fill: parent
-        onClicked: {
-          needPaperDlg.accepted()
-        }
-      }
-    }
-    onAccepted: printerMgr.needPaper = false
-  }
-
-  Dialog {
-    id: needInkDlg
-    visible: printerMgr.needInk
-    contentItem: Rectangle {
-      implicitHeight: 100
-      implicitWidth: 400
-      Text {
-        anchors.centerIn: parent
-        text: "Merci d'ajouter de l'encre !"
-      }
-      MouseArea {
-        anchors.fill: parent
-        onClicked: {
-          needInkDlg.accepted()
-        }
-      }
-    }
-    onAccepted: printerMgr.needInk = false
   }
 
   ColumnLayout {

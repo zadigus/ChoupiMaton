@@ -89,7 +89,7 @@ namespace N_IosPrinterSetup {
   //----------------------------------------------------------------------------------------------
   void PrinterSetupImpl::resetPrinter()
   {
-    setPrinter(NULL);
+    setPrinter(nullptr);
   }
 
 }

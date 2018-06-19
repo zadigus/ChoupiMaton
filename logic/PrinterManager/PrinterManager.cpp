@@ -16,9 +16,6 @@ namespace N_PrinterManager {
     , m_Impl(new N_IosPrinterManager::PrinterManagerImpl())
 #endif
     , m_IsPrinterSet(false)
-    , m_NbPrints(0)
-    , m_NeedPaper(false)
-    , m_NeedInk(false)
   { }
 
   //-----------------------------------------------------
@@ -31,8 +28,6 @@ namespace N_PrinterManager {
     m_Impl->setPrinterData(a_Data);
     auto isPrinter(a_Data.isPrinterSet());
     setPrinterSet(isPrinter);
-    setNeedInk(isPrinter);
-    setNeedPaper(isPrinter);
   }
 
   //-----------------------------------------------------
@@ -45,17 +40,6 @@ namespace N_PrinterManager {
     }
 
     m_Impl->print(a_PathToImg);
-    ++m_NbPrints;
-    if(m_NbPrints % paperFrequency() == 0)
-    {
-      qInfo() << "paper needed: nbPrints = " << m_NbPrints << ", paperFreq = " << paperFrequency();
-      setNeedPaper(true);
-    }
-    if(m_NbPrints % inkFrequency() == 0)
-    {
-      qInfo() << "ink needed: nbPrints = " << m_NbPrints << ", inkFreq = " << inkFrequency();
-      setNeedInk(true);
-    }
   }
 
   //----------------------------------------------------------------------------------------------
@@ -74,42 +58,6 @@ namespace N_PrinterManager {
     m_Settings.setValue("printDuration", a_Value);
     m_Settings.endGroup();
     emit printDurationChanged();
-  }
-
-  //----------------------------------------------------------------------------------------------
-  int PrinterManager::paperFrequency() const
-  {
-    m_Settings.beginGroup("Printer");
-    auto result(m_Settings.value("paperFrequency", 18).toInt());
-    m_Settings.endGroup();
-    return result;
-  }
-
-  //----------------------------------------------------------------------------------------------
-  void PrinterManager::setPaperFrequency(int a_Value)
-  {
-    m_Settings.beginGroup("Printer");
-    m_Settings.setValue("paperFrequency", a_Value);
-    m_Settings.endGroup();
-    emit paperFrequencyChanged();
-  }
-
-  //----------------------------------------------------------------------------------------------
-  int PrinterManager::inkFrequency() const
-  {
-    m_Settings.beginGroup("Printer");
-    auto result(m_Settings.value("inkFrequency", 54).toInt());
-    m_Settings.endGroup();
-    return result;
-  }
-
-  //----------------------------------------------------------------------------------------------
-  void PrinterManager::setInkFrequency(int a_Value)
-  {
-    m_Settings.beginGroup("Printer");
-    m_Settings.setValue("inkFrequency", a_Value);
-    m_Settings.endGroup();
-    emit inkFrequencyChanged();
   }
 
 }
