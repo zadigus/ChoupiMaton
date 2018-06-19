@@ -72,7 +72,7 @@ Rectangle {
       leftPadding: 25
       rightPadding: 25
       textFormat: Text.RichText
-      text: "Vu que l'imprimante nous a lachés, vos tronches de cake sont simplement sauvegardées ... <br>Elles seront publiées sur le compte Dropbox des mariés dès que possible."
+      text: appConfig.savingText
     }
   }
 }

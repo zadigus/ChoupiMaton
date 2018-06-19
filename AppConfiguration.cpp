@@ -61,6 +61,15 @@ QString AppConfiguration::introductionText() const
 }
 
 //----------------------------------------------------------------------------------------------
+QString AppConfiguration::savingText() const
+{
+  m_Settings.beginGroup("Text");
+  auto result(m_Settings.value("savingText", "This is the text during saving").toString());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
 qreal AppConfiguration::zoom() const
 {
   m_Settings.beginGroup("Camera");
