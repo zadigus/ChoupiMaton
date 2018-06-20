@@ -109,46 +109,6 @@ Rectangle {
         }
       }
 
-      Common.ParamIndicator {
-        id: paperFreqParam
-
-        Layout.fillWidth: true
-        Layout.alignment: Qt.AlignHCenter
-
-        name: "Paper frequency [sheets]"
-
-        from: 1
-        to: 100
-        value: printerMgr.paperFrequency
-        stepSize: 1
-
-        Binding {
-          target: printerMgr
-          property: "paperFrequency"
-          value: paperFreqParam.value
-        }
-      }
-
-      Common.ParamIndicator {
-        id: inkFreqParam
-
-        Layout.fillWidth: true
-        Layout.alignment: Qt.AlignHCenter
-
-        name: "Ink frequency [sheets]"
-
-        from: 1
-        to: 100
-        value: printerMgr.inkFrequency
-        stepSize: 1
-
-        Binding {
-          target: printerMgr
-          property: "inkFrequency"
-          value: inkFreqParam.value
-        }
-      }
-
       Button {
         Layout.alignment: Qt.AlignHCenter
 
