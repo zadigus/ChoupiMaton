@@ -20,5 +20,6 @@
         <file>Printer/PrinterConfiguration.qml</file>
         <file>ErrorSettings.qml</file>
         <file>MenuNames.js</file>
+        <file>Camera/PrintDialog.qml</file>
     </qresource>
 </RCC>
