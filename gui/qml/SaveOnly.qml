@@ -28,7 +28,7 @@ Rectangle {
   Timer {
     id: timer
 
-    interval: 15000
+    interval: appConfig.savingTime
     running: true
     repeat: false
 

@@ -49,7 +49,7 @@ Rectangle {
         family: titleFont.name
         pixelSize: 125
       }
-      text: "Impression en cours ..."
+      text: appConfig.printingTitle
     }
 
     WaitingSoftozor {
@@ -71,7 +71,7 @@ Rectangle {
       leftPadding: 25
       rightPadding: 25
       textFormat: Text.RichText
-      text: "Vos tronches de cake sont difficiles à imprimer ... <br>Ca va prendre un certain temps mais l'attente en vaut la chandelle, croyez-moi."
+      text: appConfig.printingText
     }
   }
 

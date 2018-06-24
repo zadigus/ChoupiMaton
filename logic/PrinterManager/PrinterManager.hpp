@@ -39,13 +39,16 @@ namespace N_PrinterManager {
     private:
       Q_DISABLE_COPY(PrinterManager)
 
+      Q_SLOT void onPrintCancelled();
+
     signals:
       void printDurationChanged();
       void printerSetChanged();
+      void printCancelled();
 
     private:
       mutable QSettings m_Settings;
-      std::unique_ptr<AbstractPrinterManagerImpl> m_Impl;
+      AbstractPrinterManagerImpl* m_Impl;
       bool m_IsPrinterSet;
   };
 

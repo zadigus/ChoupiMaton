@@ -72,13 +72,21 @@ Rectangle {
       }
       else
       {
+        timer.stop()
         // it is important to save at this point
         // if we do it right after the last capture,
         // the last preview takes about 6 seconds to appear...
         picsProcessor.save()
-        printerMgr.printerSet ? handle(MenuNames.PRINT) : handle(MenuNames.SAVE_ONLY)
+        printerMgr.printerSet ? printDlg.visible = true : handle(MenuNames.SAVE_ONLY)
       }
     }
+  }
+
+  PrintDialog {
+    id: printDlg
+    visible: false
+    onYes: handle(MenuNames.PRINT)
+    onNo: handle(MenuNames.SAVE_ONLY)
   }
 
   Text {

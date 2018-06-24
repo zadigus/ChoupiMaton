@@ -43,6 +43,15 @@ bool AppConfiguration::logsEnabled() const
 }
 
 //----------------------------------------------------------------------------------------------
+uint AppConfiguration::savingTime() const
+{
+  m_Settings.beginGroup("SavingProcess");
+  auto result(m_Settings.value("savingDuration", 15000).toUInt());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
 QString AppConfiguration::fotozorInstanceName() const
 {
   m_Settings.beginGroup("Text");
@@ -74,6 +83,24 @@ QString AppConfiguration::savingTitle() const
 {
   m_Settings.beginGroup("Text");
   auto result(m_Settings.value("savingTitle", "We want to save...").toString());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
+QString AppConfiguration::printingText() const
+{
+  m_Settings.beginGroup("Text");
+  auto result(m_Settings.value("printingText", "This is the text during printing").toString());
+  m_Settings.endGroup();
+  return result;
+}
+
+//----------------------------------------------------------------------------------------------
+QString AppConfiguration::printingTitle() const
+{
+  m_Settings.beginGroup("Text");
+  auto result(m_Settings.value("printingTitle", "We want to print...").toString());
   m_Settings.endGroup();
   return result;
 }

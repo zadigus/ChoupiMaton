@@ -16,6 +16,9 @@ class AppConfiguration : public QObject
   Q_PROPERTY(QString introductionText READ introductionText)
   Q_PROPERTY(QString savingText READ savingText)
   Q_PROPERTY(QString savingTitle READ savingTitle)
+  Q_PROPERTY(QString printingText READ printingText)
+  Q_PROPERTY(QString printingTitle READ printingTitle)
+  Q_PROPERTY(uint savingTime READ savingTime)
   Q_PROPERTY(qreal zoom READ zoom WRITE setZoom NOTIFY zoomChanged)
   Q_PROPERTY(qreal colorTemp READ colorTemp WRITE setColorTemp NOTIFY colorTempChanged)
   Q_PROPERTY(QSize resolution READ resolution WRITE setResolution NOTIFY resolutionChanged)
@@ -36,9 +39,15 @@ class AppConfiguration : public QObject
 
     QString savingText() const;
 
+    QString printingTitle() const;
+
+    QString printingText() const;
+
     QString introductionText() const;
 
     QString fotozorInstanceName() const;
+
+    uint savingTime() const;
 
     qreal zoom() const;
     void setZoom(qreal a_Value);

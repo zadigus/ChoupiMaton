@@ -13,14 +13,25 @@ namespace N_PrinterManager {
     : QObject(a_Parent)
     , m_Settings(N_Common::configFilename(), QSettings::IniFormat)
 #ifdef Q_OS_IOS
-    , m_Impl(new N_IosPrinterManager::PrinterManagerImpl())
+    , m_Impl(new N_IosPrinterManager::PrinterManagerImpl(this))
 #endif
     , m_IsPrinterSet(false)
-  { }
+  {
+#ifdef Q_OS_IOS
+    connect(m_Impl, &AbstractPrinterManagerImpl::cancelled, this, &PrinterManager::printCancelled);
+    connect(m_Impl, &AbstractPrinterManagerImpl::cancelled, this, &PrinterManager::onPrintCancelled);
+#endif
+  }
 
   //-----------------------------------------------------
   PrinterManager::~PrinterManager()
   { }
+
+  //-----------------------------------------------------
+  void PrinterManager::onPrintCancelled()
+  {
+    qInfo() << "PrinterManager: onPrintCancelled called";
+  }
 
   //-----------------------------------------------------
   void PrinterManager::setPrinterData(const N_IosCommonData::PrinterData& a_Data)

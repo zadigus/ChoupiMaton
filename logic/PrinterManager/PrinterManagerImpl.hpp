@@ -3,6 +3,8 @@
 
 #include "Global.hpp"
 
+#include <QObject>
+
 class QString;
 
 namespace N_IosCommonData {
@@ -11,23 +13,28 @@ namespace N_IosCommonData {
 
 namespace N_PrinterManager {
 
-  class AbstractPrinterManagerImpl
+  class AbstractPrinterManagerImpl : public QObject
   {
+    Q_OBJECT
+
     public:
-      AbstractPrinterManagerImpl();
+      AbstractPrinterManagerImpl(QObject* a_parent = nullptr);
       virtual ~AbstractPrinterManagerImpl();
 
       virtual void setPrinterData(const N_IosCommonData::PrinterData& a_Data) = 0;
       virtual void print(const QString& a_PathToImg) = 0;
 
+    Q_SIGNAL void cancelled();
+
     private:
-      Q_DISABLE_COPY(AbstractPrinterManagerImpl);
+      Q_DISABLE_COPY(AbstractPrinterManagerImpl)
   };
 
   //==============================
   // inline methods implementation
   //==============================
-  inline AbstractPrinterManagerImpl::AbstractPrinterManagerImpl()
+  inline AbstractPrinterManagerImpl::AbstractPrinterManagerImpl(QObject* a_parent)
+    : QObject(a_parent)
   { }
 
   inline AbstractPrinterManagerImpl::~AbstractPrinterManagerImpl()

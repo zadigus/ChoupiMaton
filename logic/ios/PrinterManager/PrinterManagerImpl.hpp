@@ -12,9 +12,11 @@ namespace N_IosPrinterManager {
   //-----------------------------------------------------
   class PrinterManagerImpl : public N_PrinterManager::AbstractPrinterManagerImpl
   {
+    Q_OBJECT
+
     public:
-      PrinterManagerImpl();
-      virtual ~PrinterManagerImpl();
+      PrinterManagerImpl(QObject* a_parent = nullptr);
+      virtual ~PrinterManagerImpl() override;
 
       virtual void setPrinterData(const N_IosCommonData::PrinterData& a_Data) override;
       virtual void print(const QString& a_PathToImg) override;

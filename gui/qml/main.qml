@@ -19,4 +19,9 @@ Window {
     target: mainLoader.item
     onHandle: mainLoader.source = name
   }
+
+  Connections {
+    target: printerMgr
+    onPrintCancelled: mainLoader.source = MenuNames.START
+  }
 }

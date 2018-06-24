@@ -14,8 +14,8 @@
 namespace N_IosPrinterManager {
 
   //-----------------------------------------------------
-  PrinterManagerImpl::PrinterManagerImpl()
-    : N_PrinterManager::AbstractPrinterManagerImpl()
+  PrinterManagerImpl::PrinterManagerImpl(QObject* a_parent)
+    : N_PrinterManager::AbstractPrinterManagerImpl(a_parent)
     , m_Printer(Q_NULLPTR)
     , m_PrintInfo(Q_NULLPTR)
     , m_Renderer([[PictureRenderer alloc] init])
@@ -38,8 +38,8 @@ namespace N_IosPrinterManager {
     m_PrintInfo.jobName = @"Test";
     m_PrintInfo.outputType = UIPrintInfoOutputPhoto;
     // The following two lines let the application crash for some unknown reason
-//    m_PrintInfo.orientation = UIPrintInfoOrientationPortrait;
-//    m_PrintInfo.duplex = UIPrintInfoDuplexNone;
+    //    m_PrintInfo.orientation = UIPrintInfoOrientationPortrait;
+    //    m_PrintInfo.duplex = UIPrintInfoDuplexNone;
   }
 
   //-----------------------------------------------------
@@ -59,11 +59,17 @@ namespace N_IosPrinterManager {
 
       qInfo() << "Printing image located at <" << QUrl::fromNSURL(imgUrl) << ">";
       [controller printToPrinter: m_Printer
-                  completionHandler: ^(UIPrintInteractionController* /*printCtrl*/, BOOL completed, NSError* err)
+                                  completionHandler: ^(UIPrintInteractionController* /*printCtrl*/, BOOL completed, NSError* err)
       {
-        if(completed && !err)
+        if(completed && err != nullptr)
         {
-          qInfo() << "Print successful"; // TODO: is that printed when the printer has printed?
+          qInfo() << "Print successful";
+        }
+        if(!completed)
+        {
+          // the print was cancelled:
+          qWarning() << "Print did not complete";
+          emit cancelled();
         }
       }];
     }
