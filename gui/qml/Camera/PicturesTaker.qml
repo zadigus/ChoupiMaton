@@ -77,7 +77,7 @@ Rectangle {
         // if we do it right after the last capture,
         // the last preview takes about 6 seconds to appear...
         picsProcessor.save()
-        printerMgr.printerSet ? printDlg.visible = true : handle(MenuNames.SAVE_ONLY)
+        printerMgr.printerSet ? printDlg.visible = true : handle(MenuNames.START)
       }
     }
   }
