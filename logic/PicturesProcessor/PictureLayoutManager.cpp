@@ -98,7 +98,7 @@ namespace N_PicturesProcessor {
     QTransform transform;
     transform.rotate(m_RotationAngle);
     transform.scale(m_ScaleFactor, m_ScaleFactor);
-    return a_Img.transformed(transform);
+    return a_Img.transformed(transform).mirrored(true, false);
   }
 
   //-----------------------------------------------------

@@ -86,7 +86,7 @@ Rectangle {
     id: printDlg
     visible: false
     onYes: handle(MenuNames.PRINT)
-    onNo: handle(MenuNames.SAVE_ONLY)
+    onNo: handle(MenuNames.START)
   }
 
   Text {
