@@ -61,15 +61,17 @@ namespace N_IosPrinterManager {
       [controller printToPrinter: m_Printer
                                   completionHandler: ^(UIPrintInteractionController* /*printCtrl*/, BOOL completed, NSError* err)
       {
-        if(completed && err != nullptr)
-        {
-          qInfo() << "Print successful";
-        }
-        if(!completed)
+        if(!completed && err != nullptr)
         {
           // the print was cancelled:
-          qWarning() << "Print did not complete";
+          auto error([err localizedDescription]);
+          std::string errorStr([error UTF8String]);
+          qWarning() << "Print did not complete: " << QString::fromStdString(errorStr);
           emit cancelled();
+        }
+        else
+        {
+          qInfo() << "Print successful";
         }
       }];
     }
