@@ -17,7 +17,7 @@ namespace N_PicturesProcessor {
   //-----------------------------------------------------
   QFont getBottomTextFont()
   {
-    auto id(QFontDatabase::addApplicationFont(":/fonts/AlexBrush"));
+    auto id(QFontDatabase::addApplicationFont(":/fonts/Josefin"));
     QFont result(QFontDatabase::applicationFontFamilies(id).at(0));
     result.setPixelSize(135);
     return result;

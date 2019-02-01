@@ -4,5 +4,6 @@
         <file>RujisHandwritingFontv.2.0.ttf</file>
 	<file alias="AlexBrush">AlexBrush-Regular.ttf</file>
 	<file alias="Bouquinistes">Bouquinistes.ttf</file>
+	<file alias="Josefin">JosefinSans-Bold.ttf</file>
     </qresource>
 </RCC>
