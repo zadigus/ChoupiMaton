@@ -104,7 +104,7 @@ QString AppConfiguration::printingTitle() const
   m_Settings.endGroup();
   return result;
 }
-
+	
 //----------------------------------------------------------------------------------------------
 qreal AppConfiguration::zoom() const
 {
