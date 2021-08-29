@@ -3,6 +3,8 @@
 ## Requirements
 
 - Qt 5.11
+- latest macOS
+- latest XCode
 
 ## How to compile on MacOS
 
