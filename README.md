@@ -11,7 +11,7 @@
 - create folder ~/workspace
 - install Qt in ~/workspace/Qt
 - git clone this repo in ~/workspace/choupimaton
-- [Generating code signing files in Xcode](https://trello.com/c/AoHSHC5R/2-application-signin)
+- [Generating code signing files in Xcode](https://ioscodesigning.com/generating-code-signing-files/)
 
 ## Troubleshooting
 
